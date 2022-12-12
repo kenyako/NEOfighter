@@ -8,7 +8,5 @@
 /dist/
 
 /*.spec
-/*.db
 
-/HistoryOfPasswordGeneration.txt
 /*.bat
