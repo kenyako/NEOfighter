@@ -31,4 +31,4 @@ Mechanics:
 * Selection of subjects
 * The ability to restore the health of the character
 * Objects on the level for interacting with the character (interactive obstacles, boosters, etc.)
-* Teleportation using portals
+* Teleportation by portals
