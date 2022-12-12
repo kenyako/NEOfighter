@@ -1,4 +1,5 @@
 # NEOfighter
+![https://img.shields.io/badge/Python-3.7.5-blue](https://img.shields.io/badge/Python-3.8.0-blue)
 ![GitHub all releases](https://img.shields.io/github/downloads/kenyako/Project-PyGame/total)
 
 ## Index
