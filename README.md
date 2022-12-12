@@ -17,8 +17,8 @@ It is optimal for our team.
 *[Miro](https://miro.com/)* service was chosen to track tasks, exchange links and files
 
 ## Game concept
-**Genre:** Platformer
-**Graphics:** Pixel
+* **Genre:** Platformer
+* **Graphics:** Pixel
 
 The goal of the game is to complete all the levels, that is, to get to the end point of this level
 The player is a character armed with various items to attack and defend against enemies
