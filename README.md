@@ -1,4 +1,4 @@
-# Project-PyGame: branch *[Michurin](https://github.com/kenyako/Project-PyGame/tree/Michurin)*
+# Project-PyGame: branch *«[Michurin](https://github.com/kenyako/Project-PyGame/tree/Michurin)»*
 
 ## Class *Button*
 Класс кнопки (как бы очевидно это не звучало).
