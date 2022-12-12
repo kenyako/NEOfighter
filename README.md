@@ -2,9 +2,9 @@
 ![GitHub all releases](https://img.shields.io/github/downloads/kenyako/Project-PyGame/total)
 
 ## Index
-* [Team members](https://github.com/kenyako/Project-PyGame/edit/master/README.md#team-members)
-* [Methodology of work in the project](https://github.com/kenyako/Project-PyGame/edit/master/README.md#methodology-of-work-in-the-project)
-* [Game concept](https://github.com/kenyako/Project-PyGame/edit/master/README.md#game-concept)
+* [Team members](https://github.com/kenyako/Project-PyGame/README.md#team-members)
+* [Methodology of work in the project](https://github.com/kenyako/Project-PyGame/README.md#methodology-of-work-in-the-project)
+* [Game concept](https://github.com/kenyako/Project-PyGame/README.md#game-concept)
 
 ## Team members
 * [@kenyako](https://github.com/kenyako) – **Team Lead, Developer, Logic Architect**
