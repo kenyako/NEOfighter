@@ -36,8 +36,12 @@ class Button:
                 (btn_x, btn_y, self.width, self.height)
             )
 
+        _fontSize = 30
         # Отрисовываем текст на кнопке
-        text_on_btn = pygame.font.Font("./Fonts/retro-land-mayhem.ttf", 20)\
+        text_on_btn = pygame.font.Font(
+                                    "./Fonts/retro-land-mayhem.ttf",
+                                    _fontSize
+                                    )\
             .render(btn_text, True, COLORS['second_text'])
         screen.blit(
             text_on_btn,
@@ -77,7 +81,7 @@ def end_screen(screen, text_on_screen):
     # Отрисовываем кнопку на нужных координатах
     btn.draw(
         width // 2 - btn_width // 2,
-        height // 2 - btn_height // 2 + 50,
+        height // 2 - btn_height // 2 + 75,
         "Restart", start_screen(screen))
 
 
