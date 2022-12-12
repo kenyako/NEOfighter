@@ -1,0 +1,14 @@
+/__pycache__/
+*/__pycache__/
+
+/.vscode/
+*/.vscode/
+
+/build/
+/dist/
+
+/*.spec
+/*.db
+
+/HistoryOfPasswordGeneration.txt
+/*.bat
