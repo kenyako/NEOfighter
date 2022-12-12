@@ -3,32 +3,40 @@ import pygame
 
 class Button:
     def __init__(self, width, height, inactive_color, active_color):
-        self.width = width
-        self.height = height
-        self.inactive_color = inactive_color
-        self.active_color = active_color
+        self.width = width  # Длина кнопки
+        self.height = height  # Ширина кнопки
+        self.inactive_color = inactive_color  # Базовый цвет
+        self.active_color = active_color  # Цвет при наведении
 
     def draw(self, btn_x, btn_y, btn_text=None, action=None):
-        mouse = pygame.mouse.get_pos()
-        click = pygame.mouse.get_pressed()
+        mouse = pygame.mouse.get_pos()  # Позиция мыши
+        click = pygame.mouse.get_pressed()  # Обработка нажатия на кнопку мыши
 
+        # Если курсор в пределах кнопки..
         if btn_x < mouse[0] < btn_x + self.width and \
                 btn_y < mouse[1] < btn_y + self.height:
+
+            # Отрисовываем кнопку с цветом <active_color>
             pygame.draw.rect(
                 screen,
                 self.active_color,
                 (btn_x, btn_y, self.width, self.height)
             )
 
+            # Если по ней кликнули ЛКМ и ключ action задан
             if click[0] == 1 and action is not None:
-                action()
+                action()  # Запускаем функцию, переданную по ключу action
+
+        # А ели за пределами кнопки..
         else:
+            # Отрисовываем кнопку со стандартным цветом
             pygame.draw.rect(
                 screen,
                 self.inactive_color,
                 (btn_x, btn_y, self.width, self.height)
             )
 
+        # Отрисовываем текст на кнопке
         text_on_btn = pygame.font.Font("./Fonts/retro-land-mayhem.ttf", 20)\
             .render(btn_text, True, COLORS['second_text'])
         screen.blit(
@@ -58,12 +66,15 @@ def end_screen(screen, text_on_screen):
     screen.blit(text, (text_x, text_y))
 
     btn_width, btn_height = 300, 100
+
+    # Создаем экземпляр класса Button (кнопку на экране завершения игры)
     btn = Button(
         btn_width, btn_height,
         COLORS['btn_inactive_color'],
         COLORS['btn_active_color']
         )
 
+    # Отрисовываем кнопку на нужных координатах
     btn.draw(
         width // 2 - btn_width // 2,
         height // 2 - btn_height // 2 + 50,
