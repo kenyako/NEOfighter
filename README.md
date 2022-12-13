@@ -1,11 +1,11 @@
 # NEOfighter
 ![https://img.shields.io/badge/Python-3.7.5-blue](https://img.shields.io/badge/Python-3.8.0-blue)
-![GitHub all releases](https://img.shields.io/github/downloads/kenyako/Project-PyGame/total)
+![GitHub all releases](https://img.shields.io/github/downloads/kenyako/NEOfighter/total)
 
 ## Index
-* [Team members](https://github.com/kenyako/Project-PyGame/#team-members)
-* [Methodology of work in the project](https://github.com/kenyako/Project-PyGame/#methodology-of-work-in-the-project)
-* [Game concept](https://github.com/kenyako/Project-PyGame/#game-concept)
+* [Team members](https://github.com/kenyako/NEOfighter/#team-members)
+* [Methodology of work in the project](https://github.com/kenyako/NEOfighter/#methodology-of-work-in-the-project)
+* [Game concept](https://github.com/kenyako/NEOfighter/#game-concept)
 
 ## Team members
 * [@kenyako](https://github.com/kenyako) – **Team Lead, Developer, Logic Architect**
