@@ -13,6 +13,8 @@ class Button:
         self.active_color = active_color  # Цвет при наведении
 
     def draw(self, btn_x, btn_y, btn_text=None, action=None):
+        global alreadyPressed
+
         mouse = pygame.mouse.get_pos()  # Позиция мыши
         click = pygame.mouse.get_pressed()  # Обработка нажатия на кнопку мыши
 
@@ -25,11 +27,14 @@ class Button:
                 self.active_color,
                 (btn_x, btn_y, self.width, self.height)
             )
-
+            
             # Если по ней кликнули ЛКМ и ключ action задан
-            if click[0] == 1 and action is not None:
-                # Запускаем функцию, переданную по ключу action
-                action()
+            if click[0] and action is not None:
+                alreadyPressed = True
+            else:
+                if alreadyPressed:
+                    action()
+                    alreadyPressed = False
 
         # А ели за пределами кнопки..
         else:
@@ -148,8 +153,8 @@ def lvl_2(screen):
     font = pygame.font.Font(FONT, font_size)
     text = font.render("Level 2", True, COLORS['text'])
 
-    text_x = width // 2 - text.get_width() // 2 - 50
-    text_y = height // 2 - text.get_height() // 2
+    text_x = width // 2 - text.get_width() // 2
+    text_y = height // 2 - text.get_height() // 2 - 50
 
     screen.blit(text, (text_x, text_y))
 
@@ -241,6 +246,7 @@ COLORS = {
 
 FONT = './Fonts/retro-land-mayhem.ttf'
 ACTIVE_SCREEN = 'start'
+alreadyPressed = False
 
 
 """
