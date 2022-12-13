@@ -27,7 +27,7 @@ class Button:
                 self.active_color,
                 (btn_x, btn_y, self.width, self.height)
             )
-            
+
             # Если по ней кликнули ЛКМ и ключ action задан
             if click[0] and action is not None:
                 alreadyPressed = True
@@ -244,9 +244,9 @@ COLORS = {
     'btn_active_color': "#4f5257"
 }
 
-FONT = './Fonts/retro-land-mayhem.ttf'
-ACTIVE_SCREEN = 'start'
-alreadyPressed = False
+FONT = './Fonts/retro-land-mayhem.ttf'  # Шрифт
+ACTIVE_SCREEN = 'start'  # начальная сцена
+alreadyPressed = False  # Переменная для считывании состоянии кнопки
 
 
 """
@@ -264,10 +264,10 @@ if __name__ == '__main__':
     running = True
     while running:
         for event in pygame.event.get():
-
             if event.type == pygame.QUIT:
                 running = False
 
+        # Менеджер сцен
         if ACTIVE_SCREEN == "start":
             start_screen(screen, "NEOfighter", "Start Game!")
         elif ACTIVE_SCREEN == 'lvl_1':
