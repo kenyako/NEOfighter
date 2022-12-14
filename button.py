@@ -43,7 +43,7 @@ class Button:
                     action()
                     alreadyPressed = False
 
-        # А ели за пределами кнопки..
+        # А если за пределами кнопки..
         else:
             if btn_text:
                 # Отрисовываем кнопку со стандартным цветом
@@ -69,6 +69,7 @@ class Button:
 
         # Если передан путь к картинке..
         elif btn_image is not None:
+            # Отрисовываем картинку на кнопке
             image_on_btn = pygame.image.load(btn_image)
             image_rect = image_on_btn.get_rect(
                 topleft=(btn_x, btn_y))
