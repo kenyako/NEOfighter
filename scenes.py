@@ -68,7 +68,11 @@ def start_screen(screen, text_on_screen, text_on_button_1, text_on_button_2):
         text_on_button_2, lvl_1_loader)
 
     btn_link.draw(
-        width - 50, height - 50, None, go_link, 'images\icon.png')
+        btn_x=width - 200,
+        btn_y=height - 200,
+        btn_text=None,
+        action=go_link,
+        btn_image='./Images/git_icon.png')
 
 
 def go_link():
