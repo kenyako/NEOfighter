@@ -14,7 +14,8 @@ COLORS = {
     'text': '#FFD369',
     'second_text': '#EEEEEE',
     'btn_inactive_color': "#393E46",
-    'btn_active_color': "#4f5257"
+    'btn_active_color': "#4f5257",
+    "btn_disable_color": "#2e3136"
 }
 
 FONT = './Fonts/retro-land-mayhem.ttf'  # Шрифт
@@ -22,9 +23,7 @@ alreadyPressed = False  # Переменная для считывании со�
 
 settings_temp = {
     "scenes": {
-        "currency_screen": "start"
-    },
-    "player": {
-        "last_level": 1
+        "currency_screen": "start",
+        "last_scene": "start"
     }
 }
