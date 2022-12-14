@@ -1,4 +1,4 @@
-# Project-PyGame: branch *«[Michurin](https://github.com/kenyako/Project-PyGame/tree/Michurin)»*
+# NEOfighter: branch *«[Develop](https://github.com/kenyako/NEOfighter/tree/Develop)»*
 
 ## Глобальные переменные
 * **size** – храниит длину и ширину окна
