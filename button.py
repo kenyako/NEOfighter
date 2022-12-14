@@ -10,7 +10,7 @@ class Button:
     def __init__(
             self, screen, width, height,
             inactive_color=None, active_color=None
-            ):
+    ):
         self.screen = screen
         self.width = width  # Длина кнопки
         self.height = height  # Ширина кнопки
@@ -70,7 +70,8 @@ class Button:
         # Если передан путь к картинке..
         elif btn_image is not None:
             image_on_btn = pygame.image.load(btn_image)
-            image_rect = image_on_btn.get_rect(bottomright=size)
+            image_rect = image_on_btn.get_rect(
+                topleft=(btn_x, btn_y))
             self.screen.blit(
                 image_on_btn,
                 image_rect
