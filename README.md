@@ -1,4 +1,4 @@
-# NEOfighter: branch *«[Develop](https://github.com/kenyako/NEOfighter/tree/Develop)»*
+# NEOfighter: branch *«[Feature/Start_scene](https://github.com/kenyako/NEOfighter/tree/Feature/Start_scene)»*
 
 ## Глобальные переменные
 * **size** – храниит длину и ширину окна
