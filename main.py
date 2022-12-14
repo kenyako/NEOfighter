@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
         # Менеджер сцен
         if currency_screen == "start":
-            start_screen(screen, "NEOfighter", "Start Game!")
+            start_screen(screen, "NEOfighter", "Start Game!", "Continue")
         elif currency_screen == 'lvl_1':
             lvl_1(screen)
         elif currency_screen == 'lvl_2':
