@@ -1,4 +1,4 @@
-# Project-PyGame: branch *«[Feature/Scene_manager](https://github.com/kenyako/Project-PyGame/tree/Feature/Scene_manager)»*
+# NEOfighter: branch *«[Feature/Scene_manager](https://github.com/kenyako/NEOfighter/tree/Feature/Scene_manager)»*
 
 ## Глобальные переменные
 * **size** – храниит длину и ширину окна
