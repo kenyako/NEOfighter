@@ -1,8 +1,23 @@
 import pygame
 import webbrowser
-from global_vars import *  # Импортируем глобальные переменные
-from button import Button  # Импортируем класс кнопки
 import json
+
+# Импортируем глобальные переменные
+from global_vars import *
+
+# Импортируем класс кнопки
+from button import Button
+from continue_button import ContinueButton
+
+
+def load_last_scene():
+    with open('./settings.json') as f:
+        settings = json.load(f)
+
+    settings['scenes']['currency_screen'] = settings['scenes']['last_scene']
+
+    with open('./settings.json', 'w') as f:
+        f.write(json.dumps(settings))
 
 
 def reset_value_to_scenses_variable(key, value):
@@ -46,12 +61,13 @@ def start_screen(screen, text_on_screen, text_on_button_1, text_on_button_2):
         COLORS['btn_active_color']
     )
 
-    btn_2 = Button(
+    btn_2 = ContinueButton(
         screen, btn_width, btn_height,
         COLORS['btn_inactive_color'],
         COLORS['btn_active_color']
     )
 
+    # Кнопка с ссылкой на GitHub проекта
     btn_link = Button(
         screen, 50, 50
     )
@@ -65,7 +81,7 @@ def start_screen(screen, text_on_screen, text_on_button_1, text_on_button_2):
     btn_2.draw(
         (width + btn_width + 5) // 2 - btn_width // 2,
         height // 2 - btn_height // 2 + 75,
-        text_on_button_2, lvl_1_loader)
+        text_on_button_2, load_last_scene)
 
     btn_link.draw(
         btn_x=width - 70,

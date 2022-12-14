@@ -19,21 +19,26 @@ if __name__ == '__main__':
 
     running = True
     while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-                reset_value_to_scenses_variable("currency_screen", "start")
-
         # Проверяем наличие конфигурационного файла
         if "settings.json" not in listdir():
-            in_json = json.dumps(settings_temp)
             with open("settings.json", "w") as f:
-                f.write(in_json)
+                f.write(json.dumps(settings_temp))
 
+        # Загружаем настройки
         with open('./settings.json') as f:
             settings = json.load(f)
 
         currency_screen = settings['scenes']['currency_screen']
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                settings['scenes']['last_scene'] = currency_screen
+
+                with open("settings.json", "w") as f:
+                    f.write(json.dumps(settings))
+
+                reset_value_to_scenses_variable("currency_screen", "start")
 
         # Менеджер сцен
         if currency_screen == "start":

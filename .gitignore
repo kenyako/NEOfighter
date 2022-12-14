@@ -8,5 +8,6 @@
 /dist/
 
 /*.spec
-
 /*.bat
+
+/*.json
