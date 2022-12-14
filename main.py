@@ -20,6 +20,7 @@ if __name__ == '__main__':
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+                reset_value_to_scenses_variable("currency_screen", "start")
 
         with open('./settings.json') as f:
             settings = json.load(f)
