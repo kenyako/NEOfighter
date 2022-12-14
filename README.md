@@ -1,4 +1,4 @@
-# Project-PyGame: branch *«[Michurin](https://github.com/kenyako/Project-PyGame/tree/Michurin)»*
+# Project-PyGame: branch *«[Feature/Scene_manager](https://github.com/kenyako/Project-PyGame/tree/Feature/Scene_manager)»*
 
 ## Глобальные переменные
 * **size** – храниит длину и ширину окна
