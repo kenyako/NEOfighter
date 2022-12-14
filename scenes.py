@@ -1,4 +1,5 @@
 import pygame
+import webbrowser
 from global_vars import *  # Импортируем глобальные переменные
 from button import Button  # Импортируем класс кнопки
 import json
@@ -18,15 +19,15 @@ def start_scr_loader():
     reset_value_to_scenses_variable("currency_screen", "start")
 
 
-def start_screen(screen, text_on_screen, text_on_button):
+def start_screen(screen, text_on_screen, text_on_button_1, text_on_button_2):
     """
-    Конечный экран игры, на котором отображается надпись <text_on_screen>
-    и кнопка перезапуска
+    Стартовый экран игры, на котором отображается надпись <text_on_screen>,
+    кнопки для старта и продолжения игры
     """
     # Закрашиваем окно
     screen.fill(COLORS['main'])
 
-    # Отрисовываем текст с результатом
+    # Отрисовываем текст с названием игры
     font_size = 60
     font = pygame.font.Font(FONT, font_size)
     text = font.render(text_on_screen, True, COLORS['text'])
@@ -38,18 +39,40 @@ def start_screen(screen, text_on_screen, text_on_button):
 
     btn_width, btn_height = 300, 100
 
-    # Создаем экземпляр класса Button (кнопку на экране завершения игры)
-    btn = Button(
+    # Создаем экземпляры класса Button (кнопки для старта и продолжения)
+    btn_1 = Button(
         screen, btn_width, btn_height,
         COLORS['btn_inactive_color'],
         COLORS['btn_active_color']
-        )
+    )
 
-    # Отрисовываем кнопку на нужных координатах
-    btn.draw(
-        width // 2 - btn_width // 2,
+    btn_2 = Button(
+        screen, btn_width, btn_height,
+        COLORS['btn_inactive_color'],
+        COLORS['btn_active_color']
+    )
+
+    btn_link = Button(
+        screen, 50, 50
+    )
+
+    # Отрисовываем кнопки на нужных координатах
+    btn_1.draw(
+        (width - btn_width - 5) // 2 - btn_width // 2,
         height // 2 - btn_height // 2 + 75,
-        text_on_button, lvl_1_loader)
+        text_on_button_1, lvl_1_loader)
+
+    btn_2.draw(
+        (width + btn_width + 5) // 2 - btn_width // 2,
+        height // 2 - btn_height // 2 + 75,
+        text_on_button_2, lvl_1_loader)
+
+    btn_link.draw(
+        width - 50, height - 50, None, go_link, 'images\icon.png')
+
+
+def go_link():
+    webbrowser.open(gh_link)
 
 
 def lvl_1_loader():
@@ -80,7 +103,7 @@ def lvl_1(screen):
         screen, btn_width, btn_height,
         COLORS['btn_inactive_color'],
         COLORS['btn_active_color']
-        )
+    )
 
     # Отрисовываем кнопку на нужных координатах
     btn.draw(
@@ -117,7 +140,7 @@ def lvl_2(screen):
         screen, btn_width, btn_height,
         COLORS['btn_inactive_color'],
         COLORS['btn_active_color']
-        )
+    )
 
     # Отрисовываем кнопку на нужных координатах
     btn.draw(
@@ -129,7 +152,7 @@ def lvl_2(screen):
         screen, btn_width, btn_height,
         COLORS['btn_inactive_color'],
         COLORS['btn_active_color']
-        )
+    )
 
     # Отрисовываем кнопку на нужных координатах
     btn2.draw(
@@ -171,7 +194,7 @@ def end_screen(screen, text_on_screen, text_on_button):
         screen, btn_width, btn_height,
         COLORS['btn_inactive_color'],
         COLORS['btn_active_color']
-        )
+    )
 
     # Отрисовываем кнопку на нужных координатах
     btn.draw(
