@@ -5,7 +5,6 @@ import json
 
 
 def reset_value_to_scenses_variable(key, value):
-    print("CALL")
     with open('./settings.json') as f:
         settings = json.load(f)
 
@@ -54,7 +53,6 @@ def start_screen(screen, text_on_screen, text_on_button):
 
 
 def lvl_1_loader():
-    print("CALL loader")
     reset_value_to_scenses_variable("currency_screen", "lvl_1")
 
 

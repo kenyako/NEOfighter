@@ -16,5 +16,4 @@ COLORS = {
 }
 
 FONT = './Fonts/retro-land-mayhem.ttf'  # Шрифт
-currescy_screen = 'start'  # начальная сцена
 alreadyPressed = False  # Переменная для считывании состоянии кнопки
