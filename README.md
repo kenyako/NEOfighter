@@ -1,4 +1,4 @@
-# Project-PyGame: branch *«[Feature/Scene_manager](https://github.com/kenyako/Project-PyGame/tree/Feature/Scene_manager)»*
+# NEOfighter: branch *«[Feature/Scene_manager](https://github.com/kenyako/NEOfighter/tree/Feature/Scene_manager)»*
 
 ## Менеджер сцен
 По ключу **currency_screen** в файле *settings.json* хранится название текущей сцены.
