@@ -3,6 +3,8 @@
 Для оптимального доступа из любого файла
 '''
 
+size = width, height = 800, 600  # Размеры окна
+
 # Словарь с цветами, используемыми в коде
 COLORS = {
     'main': '#222831',
@@ -14,5 +16,5 @@ COLORS = {
 }
 
 FONT = './Fonts/retro-land-mayhem.ttf'  # Шрифт
-ACTIVE_SCREEN = 'start'  # начальная сцена
+currescy_screen = 'start'  # начальная сцена
 alreadyPressed = False  # Переменная для считывании состоянии кнопки
