@@ -1,7 +1,9 @@
 import pygame
+import json
+from os import listdir
+
 from global_vars import *  # Импортируем нужные переменные
 from scenes import *  # Импортируем сцены
-import json
 
 
 """
@@ -21,6 +23,12 @@ if __name__ == '__main__':
             if event.type == pygame.QUIT:
                 running = False
                 reset_value_to_scenses_variable("currency_screen", "start")
+
+        # Проверяем наличие конфигурационного файла
+        if "settings.json" not in listdir():
+            in_json = json.dumps(settings_temp)
+            with open("settings.json", "w") as f:
+                f.write(in_json)
 
         with open('./settings.json') as f:
             settings = json.load(f)

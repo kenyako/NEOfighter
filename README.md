@@ -1,3 +1,5 @@
+# NEOfighter: branch *«[Feature/Scene_manager](https://github.com/kenyako/NEOfighter/tree/Feature/Scene_manager)»*
+=======
 # NEOfighter: branch *«[Develop](https://github.com/kenyako/NEOfighter/tree/Develop)»*
 
 ## Глобальные переменные

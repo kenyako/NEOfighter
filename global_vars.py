@@ -17,3 +17,12 @@ COLORS = {
 
 FONT = './Fonts/retro-land-mayhem.ttf'  # Шрифт
 alreadyPressed = False  # Переменная для считывании состоянии кнопки
+
+settings_temp = {
+    "scenes": {
+        "currency_screen": "start"
+    },
+    "player": {
+        "last_level": 1
+    }
+}
