@@ -3,9 +3,11 @@
 Для оптимального доступа из любого файла
 '''
 
-gh_link = 'https://github.com/kenyako/NEOfighter'  # Ссылка на репозиторий
+# Ссылка на репозиторий
+gh_link = 'https://github.com/kenyako/NEOfighter'
 
-size = width, height = 800, 600  # Размеры окна
+# Размеры окна
+size = width, height = 800, 600
 
 # Словарь с цветами, используемыми в коде
 COLORS = {
@@ -18,8 +20,11 @@ COLORS = {
     "btn_disable_color": "#2e3136"
 }
 
-FONT = './Fonts/retro-land-mayhem.ttf'  # Шрифт
-alreadyPressed = False  # Переменная для считывании состоянии кнопки
+# Шрифт
+FONT = './Data/Fonts/retro-land-mayhem.ttf'
+
+# Переменная для считывании состоянии кнопки
+alreadyPressed = False
 
 settings_temp = {
     "scenes": {
@@ -27,3 +32,6 @@ settings_temp = {
         "last_scene": "start"
     }
 }
+
+# Файл JSON для сохранения
+SETTINGS_JSON = './Data/settings.json'
