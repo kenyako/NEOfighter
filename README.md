@@ -8,8 +8,6 @@
 * [Game concept](https://github.com/kenyako/NEOfighter/#game-concept)
 
 ## Team members
-* [@kenyako](https://github.com/kenyako) – **Team Lead, Developer, Logic Architect**
-* [@MichurinDev](https://github.com/MichurinDev) – **Developer, UI-Designer**
 * [@Svetikk4](https://github.com/Svetikk4) – **Developer, Level-Designer**
 
 ## Methodology of work in the project
