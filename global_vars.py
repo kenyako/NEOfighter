@@ -18,7 +18,7 @@ COLORS = {
     "btn_disable_color": "#2e3136"
 }
 
-FONT = './Fonts/retro-land-mayhem.ttf'  # Шрифт
+FONT = 'data/Fonts/retro-land-mayhem.ttf'  # Шрифт
 alreadyPressed = False  # Переменная для считывании состоянии кнопки
 
 settings_temp = {

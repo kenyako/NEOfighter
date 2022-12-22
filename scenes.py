@@ -88,7 +88,7 @@ def start_screen(screen, text_on_screen, text_on_button_1, text_on_button_2):
         btn_y=height - 70,
         btn_text=None,
         action=go_link,
-        btn_image='./Images/git_icon.png')
+        btn_image='data/Images/git_icon.png')
 
 
 def go_link():
