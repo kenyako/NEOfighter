@@ -1,4 +1,5 @@
 import pygame
+import sys
 import json
 from os import listdir
 
@@ -10,6 +11,12 @@ from scenes import *  # Импортируем сцены
 Main loop
 """
 
+
+def terminate():
+    pygame.quit()
+    sys.exit()
+
+
 # Запускаем сие чудо
 if __name__ == '__main__':
     pygame.init()
@@ -17,8 +24,7 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption("NEOfighter")
 
-    running = True
-    while running:
+    while True:
         # Проверяем наличие конфигурационного файла
         if "settings.json" not in listdir():
             with open("settings.json", "w") as f:
@@ -32,13 +38,15 @@ if __name__ == '__main__':
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False
                 settings['scenes']['last_scene'] = currency_screen
 
                 with open("settings.json", "w") as f:
                     f.write(json.dumps(settings))
 
                 reset_value_to_scenses_variable("currency_screen", "start")
+
+                # Функция, закрывающая окно
+                terminate()
 
         # Менеджер сцен
         if currency_screen == "start":
@@ -51,6 +59,5 @@ if __name__ == '__main__':
             end_screen(screen, "You Lose!", "Restart")
         elif currency_screen == 'win':
             end_screen(screen, "You Win!", "Restart")
-        pygame.display.flip()
 
-    pygame.quit()
+        pygame.display.flip()
