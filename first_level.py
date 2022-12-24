@@ -52,7 +52,8 @@ def main():
                     pf.fill(Color(PLATFORM_COLOR))
                     screen.blit(pf, (x, y))
 
-                x += PLATFORM_WIDTH  # блоки платформы ставятся на ширине блоков
+                # блоки платформы ставятся на ширине блоков
+                x += PLATFORM_WIDTH
             y += PLATFORM_HEIGHT
             x = 0
 
