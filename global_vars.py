@@ -26,6 +26,7 @@ FONT = './Data/Fonts/retro-land-mayhem.ttf'
 # Переменная для считывании состоянии кнопки
 alreadyPressed = False
 
+
 settings_temp = {
     "scenes": {
         "currency_screen": "start",
