@@ -11,27 +11,27 @@ from continue_button import ContinueButton
 
 
 def load_last_scene():
-    with open('./settings.json') as f:
+    with open(SETTINGS_JSON) as f:
         settings = json.load(f)
 
     settings['scenes']['currency_screen'] = settings['scenes']['last_scene']
 
-    with open('./settings.json', 'w') as f:
+    with open(SETTINGS_JSON, 'w') as f:
         f.write(json.dumps(settings))
 
 
-def reset_value_to_scenses_variable(key, value):
-    with open('./settings.json') as f:
+def reset_value_to_scenes_variable(key, value):
+    with open(SETTINGS_JSON) as f:
         settings = json.load(f)
 
     settings['scenes'][key] = value
 
-    with open('./settings.json', 'w') as f:
-        json.dump(settings, f)
+    with open(SETTINGS_JSON, 'w') as f:
+        f.write(json.dumps(settings))
 
 
 def start_scr_loader():
-    reset_value_to_scenses_variable("currency_screen", "start")
+    reset_value_to_scenes_variable("currency_screen", "start")
 
 
 def start_screen(screen, text_on_screen, text_on_button_1, text_on_button_2):
@@ -88,7 +88,7 @@ def start_screen(screen, text_on_screen, text_on_button_1, text_on_button_2):
         btn_y=height - 70,
         btn_text=None,
         action=go_link,
-        btn_image='data/Images/git_icon.png')
+        btn_image='./Data/Images/git_icon.png')
 
 
 def go_link():
@@ -96,7 +96,7 @@ def go_link():
 
 
 def lvl_1_loader():
-    reset_value_to_scenses_variable("currency_screen", "lvl_1")
+    reset_value_to_scenes_variable("currency_screen", "lvl_1")
 
 
 def lvl_1(screen):
@@ -133,7 +133,7 @@ def lvl_1(screen):
 
 
 def lvl_2_loader():
-    reset_value_to_scenses_variable("currency_screen", "lvl_2")
+    reset_value_to_scenes_variable("currency_screen", "lvl_2")
 
 
 def lvl_2(screen):
@@ -182,11 +182,11 @@ def lvl_2(screen):
 
 
 def win_scr_loader():
-    reset_value_to_scenses_variable("currency_screen", "win")
+    reset_value_to_scenes_variable("currency_screen", "win")
 
 
 def lose_scr_loader():
-    reset_value_to_scenses_variable("currency_screen", "lose")
+    reset_value_to_scenes_variable("currency_screen", "lose")
 
 
 def end_screen(screen, text_on_screen, text_on_button):

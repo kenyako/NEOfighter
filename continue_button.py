@@ -17,7 +17,7 @@ class ContinueButton(Button):
     def draw(self, btn_x, btn_y, btn_text, action=None, btn_image=None):
         global alreadyPressed
 
-        with open('./settings.json') as f:
+        with open(SETTINGS_JSON) as f:
             settings = json.load(f)
 
         last_scene = settings['scenes']['last_scene']

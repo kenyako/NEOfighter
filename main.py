@@ -26,12 +26,12 @@ if __name__ == '__main__':
 
     while True:
         # Проверяем наличие конфигурационного файла
-        if "settings.json" not in listdir():
-            with open("settings.json", "w") as f:
+        if "settings.json" not in listdir("./Data"):
+            with open(SETTINGS_JSON, "w") as f:
                 f.write(json.dumps(settings_temp))
 
         # Загружаем настройки
-        with open('./settings.json') as f:
+        with open(SETTINGS_JSON) as f:
             settings = json.load(f)
 
         currency_screen = settings['scenes']['currency_screen']
@@ -40,10 +40,10 @@ if __name__ == '__main__':
             if event.type == pygame.QUIT:
                 settings['scenes']['last_scene'] = currency_screen
 
-                with open("settings.json", "w") as f:
+                with open(SETTINGS_JSON, "w") as f:
                     f.write(json.dumps(settings))
 
-                reset_value_to_scenses_variable("currency_screen", "start")
+                reset_value_to_scenes_variable("currency_screen", "start")
 
                 # Функция, закрывающая окно
                 terminate()
