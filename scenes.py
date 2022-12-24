@@ -103,33 +103,26 @@ def lvl_1(screen):
     """
     Уровень 1
     """
-    # Закрашиваем окно
-    screen.fill(COLORS['main'])
+    PLATFORM_COLOR = COLORS["platform_color"]
+    EMPTY_COLOR = COLORS["empty_color"]
+    PLATFORM_WIDTH = 32
+    PLATFORM_HEIGHT = 32
 
-    # Отрисовываем текст с результатом
-    font_size = 60
-    font = pygame.font.Font(FONT, font_size)
-    text = font.render("Level 1", True, COLORS['text'])
+    with open("./Data/Levels/lvl_1.lvl", "r") as f:
+        level = f.read().split("\n")
 
-    text_x = width // 2 - text.get_width() // 2
-    text_y = height // 2 - text.get_height() // 2 - 50
+    screen.fill(EMPTY_COLOR)
+    x = y = 0  # координаты
+    for row in level:  # вся строка
+        for col in row:  # каждый символ
+            if col == "-":
+                pf = pygame.Surface((PLATFORM_WIDTH, PLATFORM_HEIGHT))
+                pf.fill(pygame.Color(PLATFORM_COLOR))
+                screen.blit(pf, (x, y))
 
-    screen.blit(text, (text_x, text_y))
-
-    btn_width, btn_height = 300, 100
-
-    # Создаем экземпляр класса Button (кнопку на экране завершения игры)
-    btn = Button(
-        screen, btn_width, btn_height,
-        COLORS['btn_inactive_color'],
-        COLORS['btn_active_color']
-    )
-
-    # Отрисовываем кнопку на нужных координатах
-    btn.draw(
-        width // 2 - btn_width // 2,
-        height // 2 - btn_height // 2 + 75,
-        "Go to Lvl 2 ->", lvl_2_loader)
+            x += PLATFORM_WIDTH  # блоки платформы ставятся на ширине блоков
+        y += PLATFORM_HEIGHT
+        x = 0
 
 
 def lvl_2_loader():
