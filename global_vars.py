@@ -17,7 +17,9 @@ COLORS = {
     'second_text': '#EEEEEE',
     'btn_inactive_color': "#393E46",
     'btn_active_color': "#4f5257",
-    "btn_disable_color": "#2e3136"
+    "btn_disable_color": "#2e3136",
+    "platform_color": "#222831",
+    "empty_color": '#393E46'
 }
 
 # Шрифт
