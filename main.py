@@ -25,6 +25,9 @@ if __name__ == '__main__':
     pygame.display.set_caption("NEOfighter")
 
     while True:
+        # Период выполнения цикла игры
+        pygame.time.delay(50)
+
         # Проверяем наличие конфигурационного файла
         if "settings.json" not in listdir("./Data"):
             with open(SETTINGS_JSON, "w") as f:
