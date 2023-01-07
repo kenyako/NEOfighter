@@ -1,6 +1,8 @@
 import pygame
 import webbrowser
 import json
+import os
+import sys
 
 # Импортируем глобальные переменные
 from global_vars import *
@@ -8,8 +10,6 @@ from global_vars import *
 # Импортируем класс кнопки
 from button import Button
 from continue_button import ContinueButton
-
-from sprites import *
 
 
 def load_last_scene():

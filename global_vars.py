@@ -1,4 +1,4 @@
-from pygame import image
+from pygame import image, sprite
 
 '''
 В данном файле содержатся глобальные переменные
@@ -17,10 +17,22 @@ character_speed = 10
 # Спрайты ходьбы
 go_sprites = [
     image.load('./Data/Sprites/goes_right.png'),
+    image.load('./Data/Sprites/goes_right.png'),
+    image.load('./Data/Sprites/goes_right.png'),
+
     image.load('./Data/Sprites/stand_right.png'),
+    image.load('./Data/Sprites/stand_right.png'),
+    image.load('./Data/Sprites/stand_right.png'),
+
     image.load('./Data/Sprites/goes_right2.png'),
+    image.load('./Data/Sprites/goes_right2.png'),
+    image.load('./Data/Sprites/goes_right2.png'),
+
     image.load('./Data/Sprites/stand_right.png'),
+    image.load('./Data/Sprites/stand_right.png'),
+    image.load('./Data/Sprites/stand_right.png')
 ]
+
 player_anim = 0
 
 # Словарь с цветами, используемыми в коде
@@ -58,3 +70,7 @@ settings_temp = {
 
 # Файл JSON для сохранения
 SETTINGS_JSON = './Data/settings.json'
+
+
+player_group = sprite.Group()
+wall_group = sprite.Group()
