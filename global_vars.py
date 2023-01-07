@@ -16,10 +16,10 @@ character_speed = 10
 
 # Спрайты ходьбы
 go_sprites = [
-    image.load('Data\Sprites\goes_right.png'),
-    image.load('Data\Sprites\stand_right.png'),
-    image.load('Data\Sprites\goes_right2.png'),
-    image.load('Data\Sprites\stand_right.png'),
+    image.load('./Data/Sprites/goes_right.png'),
+    image.load('./Data/Sprites/stand_right.png'),
+    image.load('./Data/Sprites/goes_right2.png'),
+    image.load('./Data/Sprites/stand_right.png'),
 ]
 player_anim = 0
 
