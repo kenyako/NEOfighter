@@ -9,6 +9,8 @@ from global_vars import *
 from button import Button
 from continue_button import ContinueButton
 
+from sprites import *
+
 
 def load_last_scene():
     with open(SETTINGS_JSON) as f:
@@ -47,8 +49,8 @@ def start_screen(screen, text_on_screen, text_on_button_1, text_on_button_2):
     font = pygame.font.Font(FONT, font_size)
     text = font.render(text_on_screen, True, COLORS['text'])
 
-    text_x = width // 2 - text.get_width() // 2
-    text_y = height // 2 - text.get_height() // 2 - 75
+    text_x = SCREEN_WIDTH // 2 - text.get_width() // 2
+    text_y = SCREEN_HEIGHT // 2 - text.get_height() // 2 - 75
 
     screen.blit(text, (text_x, text_y))
 
@@ -74,18 +76,18 @@ def start_screen(screen, text_on_screen, text_on_button_1, text_on_button_2):
 
     # Отрисовываем кнопки на нужных координатах
     btn_1.draw(
-        (width - btn_width - 5) // 2 - btn_width // 2,
-        height // 2 - btn_height // 2 + 75,
+        (SCREEN_WIDTH - btn_width - 5) // 2 - btn_width // 2,
+        SCREEN_HEIGHT // 2 - btn_height // 2 + 75,
         text_on_button_1, lvl_1_loader)
 
     btn_2.draw(
-        (width + btn_width + 5) // 2 - btn_width // 2,
-        height // 2 - btn_height // 2 + 75,
+        (SCREEN_WIDTH + btn_width + 5) // 2 - btn_width // 2,
+        SCREEN_HEIGHT // 2 - btn_height // 2 + 75,
         text_on_button_2, load_last_scene)
 
     btn_link.draw(
-        btn_x=width - 70,
-        btn_y=height - 70,
+        btn_x=SCREEN_WIDTH - 70,
+        btn_y=SCREEN_HEIGHT - 70,
         btn_text=None,
         action=go_link,
         btn_image='./Data/Images/git_icon.png')
@@ -97,32 +99,6 @@ def go_link():
 
 def lvl_1_loader():
     reset_value_to_scenes_variable("currency_screen", "lvl_1")
-
-
-def lvl_1(screen):
-    """
-    Уровень 1
-    """
-    PLATFORM_COLOR = COLORS["platform_color"]
-    EMPTY_COLOR = COLORS["empty_color"]
-    PLATFORM_WIDTH = 32
-    PLATFORM_HEIGHT = 32
-
-    with open("./Data/Levels/lvl_1.lvl", "r") as f:
-        level = f.read().split("\n")
-
-    screen.fill(EMPTY_COLOR)
-    x = y = 0  # координаты
-    for row in level:  # вся строка
-        for col in row:  # каждый символ
-            if col == "-":
-                pf = pygame.Surface((PLATFORM_WIDTH, PLATFORM_HEIGHT))
-                pf.fill(pygame.Color(PLATFORM_COLOR))
-                screen.blit(pf, (x, y))
-
-            x += PLATFORM_WIDTH  # блоки платформы ставятся на ширине блоков
-        y += PLATFORM_HEIGHT
-        x = 0
 
 
 def lvl_2_loader():
@@ -141,8 +117,8 @@ def lvl_2(screen):
     font = pygame.font.Font(FONT, font_size)
     text = font.render("Level 2", True, COLORS['text'])
 
-    text_x = width // 2 - text.get_width() // 2
-    text_y = height // 2 - text.get_height() // 2 - 50
+    text_x = SCREEN_WIDTH // 2 - text.get_width() // 2
+    text_y = SCREEN_HEIGHT // 2 - text.get_height() // 2 - 50
 
     screen.blit(text, (text_x, text_y))
 
@@ -157,8 +133,8 @@ def lvl_2(screen):
 
     # Отрисовываем кнопку на нужных координатах
     btn.draw(
-        (width - btn_width - 5) // 2 - btn_width // 2,
-        height // 2 - btn_height // 2 + 75,
+        (SCREEN_WIDTH - btn_width - 5) // 2 - btn_width // 2,
+        SCREEN_HEIGHT // 2 - btn_height // 2 + 75,
         "Go Win ->", win_scr_loader)
 
     btn2 = Button(
@@ -169,8 +145,8 @@ def lvl_2(screen):
 
     # Отрисовываем кнопку на нужных координатах
     btn2.draw(
-        (width + btn_width + 5) // 2 - btn_width // 2,
-        height // 2 - btn_height // 2 + 75,
+        (SCREEN_WIDTH + btn_width + 5) // 2 - btn_width // 2,
+        SCREEN_HEIGHT // 2 - btn_height // 2 + 75,
         "Go Lose ->", lose_scr_loader)
 
 
@@ -195,8 +171,8 @@ def end_screen(screen, text_on_screen, text_on_button):
     font = pygame.font.Font(FONT, font_size)
     text = font.render(text_on_screen, True, COLORS['text'])
 
-    text_x = width // 2 - text.get_width() // 2
-    text_y = height // 2 - text.get_height() // 2 - 75
+    text_x = SCREEN_WIDTH // 2 - text.get_width() // 2
+    text_y = SCREEN_HEIGHT // 2 - text.get_height() // 2 - 75
 
     screen.blit(text, (text_x, text_y))
 
@@ -211,6 +187,6 @@ def end_screen(screen, text_on_screen, text_on_button):
 
     # Отрисовываем кнопку на нужных координатах
     btn.draw(
-        width // 2 - btn_width // 2,
-        height // 2 - btn_height // 2 + 75,
+        SCREEN_WIDTH // 2 - btn_width // 2,
+        SCREEN_HEIGHT // 2 - btn_height // 2 + 75,
         text_on_button, start_scr_loader)
