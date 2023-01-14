@@ -11,12 +11,14 @@ class Player(pygame.sprite.Sprite):
         super().__init__(player_group)
 
         # Загружаем изображение с начальной позицией игрока
-        self.image = load_image('./Sprites/stand_sraight.png')
+        self.image = load_image('./Sprites/Player/stand_sraight.png')
         self.rect = self.image.get_rect().move(
             pos_x * PLATFORM_WIDTH, pos_y * PLATFORM_HEIGHT)
 
         self.change_x = 0
         self.change_y = 0
+
+        self.get_weapon = False
 
     def update(self, screen):
         global player_anim
@@ -49,7 +51,7 @@ class Player(pygame.sprite.Sprite):
 
         if self.change_y == 0:
             self.is_jump = False
-            self.image = load_image('./Sprites/stand_sraight.png')
+            self.image = load_image('./Sprites/Player/stand_sraight.png')
 
         # Если персонаж находится в гориз. движении и не прыгает,
         # то мы пролистываем кадры ходьбы
@@ -85,10 +87,10 @@ class Player(pygame.sprite.Sprite):
 
         # Проверка на то, в какую сторону смотрит игрок в момент прыжка
         if self.right:
-            self.image = load_image('./Sprites/jump_right.png')
+            self.image = load_image('./Sprites/Player/jump_right.png')
         else:
             self.image = pygame.transform.flip(
-                load_image('./Sprites/jump_right.png'), True, False)
+                load_image('./Sprites/Player/jump_right.png'), True, False)
 
         self.rect.y += 10
         platform_hit_list = pygame.sprite.spritecollide(
@@ -104,7 +106,7 @@ class Player(pygame.sprite.Sprite):
         # Проверка на поворот в прыжке
         if self.right and self.is_jump:
             self.image = pygame.transform.flip(
-                load_image('./Sprites/jump_right.png'), True, False)
+                load_image('./Sprites/Player/jump_right.png'), True, False)
 
         self.right = False
 
@@ -120,6 +122,6 @@ class Player(pygame.sprite.Sprite):
         # Если персонаж находится не в прыжке,
         # он принимает свою обычную позицию
         if not self.is_jump:
-            self.image = load_image('./Sprites/stand_sraight.png')
+            self.image = load_image('./Sprites/Player/stand_sraight.png')
 
         self.change_x = 0

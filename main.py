@@ -5,7 +5,6 @@ import os
 
 from global_vars import *  # Импортируем нужные переменные
 from scenes import *  # Импортируем сцены
-from levels_func import *
 
 
 """
@@ -52,6 +51,7 @@ if __name__ == '__main__':
         elif currency_screen == 'lvl_1':
             wall_group.update(screen)
             player.update(screen)
+            gun_group.draw(screen)
         elif currency_screen == 'lvl_2':
             lvl_2(screen)
         elif currency_screen == 'lose':
