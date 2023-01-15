@@ -49,9 +49,11 @@ if __name__ == '__main__':
         if currency_screen == "start":
             start_screen(screen, "NEOfighter", "Start Game!", "Continue")
         elif currency_screen == 'lvl_1':
+            # Отричовка объектов первой сцены
             wall_group.update(screen)
             player.update(screen)
             gun_group.draw(screen)
+
         elif currency_screen == 'lvl_2':
             lvl_2(screen)
         elif currency_screen == 'lose':
@@ -72,6 +74,7 @@ if __name__ == '__main__':
                 # Функция, закрывающая окно
                 terminate()
 
+            # Подключение клавиш для управления
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_d:
                     player.go_right()
