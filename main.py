@@ -50,6 +50,9 @@ if __name__ == '__main__':
         if currency_screen == "start":
             start_screen(screen, "NEOfighter", "Start Game!", "Continue")
         elif currency_screen == 'lvl_1':
+            if player.rect.right > SCREEN_WIDTH - 40:
+                lvl_2_loader()
+
             wall_group.update(screen)
             player.update(screen)
         elif currency_screen == 'lvl_2':
@@ -63,6 +66,9 @@ if __name__ == '__main__':
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 settings['scenes']['last_scene'] = currency_screen
+
+                settings['saves']['coord_x'] = player.rect.x
+                settings['saves']['coord_y'] = player.rect.y
 
                 with open(SETTINGS_JSON, "w") as f:
                     f.write(json.dumps(settings))

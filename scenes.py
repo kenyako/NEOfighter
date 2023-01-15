@@ -2,7 +2,6 @@ import pygame
 import webbrowser
 import json
 import os
-import sys
 
 # Импортируем глобальные переменные
 from global_vars import *
@@ -98,6 +97,15 @@ def go_link():
 
 
 def lvl_1_loader():
+    with open(SETTINGS_JSON) as f:
+        settings = json.load(f)
+
+    settings['saves']['coord_x'] = None
+    settings['saves']['coord_y'] = None
+
+    with open(SETTINGS_JSON, "w") as f:
+        f.write(json.dumps(settings))
+
     reset_value_to_scenes_variable("currency_screen", "lvl_1")
 
 

@@ -1,4 +1,5 @@
 import pygame
+import json
 from global_vars import *
 from LoadImage import *
 
@@ -18,10 +19,33 @@ class Player(pygame.sprite.Sprite):
         self.change_x = 0
         self.change_y = 0
 
+        # self.cur_player_x = pos_x * PLATFORM_WIDTH
+        # self.cur_player_y = pos_y * PLATFORM_HEIGHT
+        # self.cur_player_weapon = None
+        # self.cur_player_health = 100
+        # self.cur_player_ammo = 0
+
     def update(self, screen):
         global player_anim
 
         self.calc_grav()
+
+        with open(SETTINGS_JSON) as f:
+            settings = json.load(f)
+
+        if settings['saves']['coord_x']:
+
+            cur_x = settings['saves']['coord_x']
+            cur_y = settings['saves']['coord_y']
+
+            self.rect.x = cur_x
+            self.rect.y = cur_y
+
+            settings['saves']['coord_x'] = None
+            settings['saves']['coord_y'] = None
+
+            with open(SETTINGS_JSON, "w") as f:
+                f.write(json.dumps(settings))
 
         self.rect.x += self.change_x
 
@@ -96,7 +120,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.y -= 10
 
         if len(platform_hit_list) > 0 or self.rect.bottom >= SCREEN_HEIGHT:
-            self.change_y = -15
+            self.change_y = -20
 
     def go_left(self):
         self.change_x = -character_speed

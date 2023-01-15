@@ -65,6 +65,10 @@ settings_temp = {
     "scenes": {
         "currency_screen": "start",
         "last_scene": "start"
+    },
+    "saves": {
+        "coord_x": None,
+        "coord_y": None
     }
 }
 
