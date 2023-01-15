@@ -52,6 +52,7 @@ if __name__ == '__main__':
             wall_group.update(screen)
             player.update(screen)
             gun_group.draw(screen)
+            trampoline_group.draw(screen)
         elif currency_screen == 'lvl_2':
             lvl_2(screen)
         elif currency_screen == 'lose':

@@ -9,6 +9,6 @@ class Gun(pygame.sprite.Sprite):
 
         self.x, self.y = x, y
 
-        self.image = load_image('./Sprites/trampoline.png')
+        self.image = load_image('./Sprites/gun.png')
         self.rect = self.image.get_rect().move(
             self.x * PLATFORM_WIDTH, self.y * PLATFORM_HEIGHT)
