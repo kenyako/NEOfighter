@@ -3,9 +3,9 @@ from LoadImage import load_image
 from global_vars import *
 
 
-class Gun(pygame.sprite.Sprite):
+class Trampoline(pygame.sprite.Sprite):
     def __init__(self, x, y) -> None:
-        super().__init__(gun_group)
+        super().__init__(trampoline_group)
 
         self.x, self.y = x, y
 

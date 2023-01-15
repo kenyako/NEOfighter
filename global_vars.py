@@ -75,3 +75,4 @@ SETTINGS_JSON = './Data/settings.json'
 player_group = sprite.Group()
 wall_group = sprite.Group()
 gun_group = sprite.Group()
+trampoline_group = sprite.Group()

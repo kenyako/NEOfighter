@@ -11,6 +11,7 @@ from continue_button import ContinueButton
 from wall import Wall
 from player import Player
 from gun import Gun
+from trampoline import Trampoline
 
 
 def load_level(filename):
@@ -35,6 +36,8 @@ def generate_level(level):
                 new_player = Player(x, y)
             elif level[y][x] == "G":
                 Gun(x, y)
+            elif level[y][x] == "T":
+                Trampoline(x, y)
 
     return new_player
 
