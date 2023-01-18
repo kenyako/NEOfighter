@@ -1,4 +1,5 @@
 from wall import Wall
+from portal import Portal
 from player import Player
 
 
@@ -20,6 +21,8 @@ def generate_level(level):
         for x in range(len(level[y])):
             if level[y][x] == '-':
                 Wall(x, y)
+            elif level[y][x] == 'P':
+                Portal(x, y)
             elif level[y][x] == '@':
                 new_player = Player(x, y)
 

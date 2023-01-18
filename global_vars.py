@@ -68,7 +68,9 @@ settings_temp = {
     },
     "saves": {
         "coord_x": None,
-        "coord_y": None
+        "coord_y": None,
+        "have_gun": False,
+        "count_health": 100,
     }
 }
 
@@ -78,3 +80,4 @@ SETTINGS_JSON = './Data/settings.json'
 
 player_group = sprite.Group()
 wall_group = sprite.Group()
+portal_group = sprite.Group()

@@ -6,6 +6,7 @@ import os
 from global_vars import *  # Импортируем нужные переменные
 from scenes import *  # Импортируем сцены
 from levels_func import *
+from load_image_func import *
 
 
 """
@@ -50,11 +51,14 @@ if __name__ == '__main__':
         if currency_screen == "start":
             start_screen(screen, "NEOfighter", "Start Game!", "Continue")
         elif currency_screen == 'lvl_1':
-            if player.rect.right > SCREEN_WIDTH - 40:
+            if player.rect.right > SCREEN_WIDTH - 50:
                 lvl_2_loader()
 
             wall_group.update(screen)
             player.update(screen)
+            screen.blit(pygame.transform.scale(load_image(
+                './Sprites/portal.png'), (30, 110)), (720, 170))
+            portal_group.draw(screen)
         elif currency_screen == 'lvl_2':
             lvl_2(screen)
         elif currency_screen == 'lose':

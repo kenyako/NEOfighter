@@ -1,7 +1,6 @@
 import pygame
 import webbrowser
 import json
-import os
 
 # Импортируем глобальные переменные
 from global_vars import *

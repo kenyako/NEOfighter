@@ -1,7 +1,7 @@
 import pygame
 import json
 from global_vars import *
-from LoadImage import *
+from load_image_func import *
 
 
 class Player(pygame.sprite.Sprite):
@@ -18,12 +18,6 @@ class Player(pygame.sprite.Sprite):
 
         self.change_x = 0
         self.change_y = 0
-
-        # self.cur_player_x = pos_x * PLATFORM_WIDTH
-        # self.cur_player_y = pos_y * PLATFORM_HEIGHT
-        # self.cur_player_weapon = None
-        # self.cur_player_health = 100
-        # self.cur_player_ammo = 0
 
     def update(self, screen):
         global player_anim
@@ -74,6 +68,11 @@ class Player(pygame.sprite.Sprite):
         if self.change_y == 0:
             self.is_jump = False
             self.image = load_image('./Sprites/stand_sraight.png')
+
+        block_hit_list = pygame.sprite.spritecollide(self, portal_group, False)
+
+        for block in block_hit_list:
+            pass
 
         # Если персонаж находится в гориз. движении и не прыгает,
         # то мы пролистываем кадры ходьбы
