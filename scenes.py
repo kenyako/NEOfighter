@@ -26,7 +26,7 @@ def load_level(filename):
 
 
 def generate_level(level):
-    new_player, x, y = None, None, None
+    new_player, gun, x, y = None, None, 0, 0
 
     for y in range(len(level)):
         for x in range(len(level[y])):
@@ -35,11 +35,11 @@ def generate_level(level):
             elif level[y][x] == '@':
                 new_player = Player(x, y)
             elif level[y][x] == "G":
-                Gun(x, y)
+                gun = Gun(x, y, new_player)
             elif level[y][x] == "T":
                 Trampoline(x, y)
 
-    return new_player
+    return new_player, gun
 
 
 def load_last_scene():

@@ -24,7 +24,7 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption("NEOfighter")
 
-    player = generate_level(load_level('Levels/lvl_1.lvl'))
+    player, gun = generate_level(load_level('Levels/lvl_1.lvl'))
 
     clock = pygame.time.Clock()
 
@@ -49,10 +49,10 @@ if __name__ == '__main__':
         if currency_screen == "start":
             start_screen(screen, "NEOfighter", "Start Game!", "Continue")
         elif currency_screen == 'lvl_1':
-            # Отричовка объектов первой сцены
+            # Отрисовка объектов первой сцены
             wall_group.update(screen)
             player.update(screen)
-            gun_group.draw(screen)
+            gun.update(screen)
             trampoline_group.draw(screen)
 
         elif currency_screen == 'lvl_2':
