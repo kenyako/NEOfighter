@@ -16,21 +16,21 @@ character_speed = 10
 
 # Спрайты ходьбы
 go_sprites = [
-    image.load('./Data/Sprites/goes_right.png'),
-    image.load('./Data/Sprites/goes_right.png'),
-    image.load('./Data/Sprites/goes_right.png'),
+    image.load('./Data/Sprites/Player/goes_right.png'),
+    image.load('./Data/Sprites/Player/goes_right.png'),
+    image.load('./Data/Sprites/Player/goes_right.png'),
 
-    image.load('./Data/Sprites/stand_right.png'),
-    image.load('./Data/Sprites/stand_right.png'),
-    image.load('./Data/Sprites/stand_right.png'),
+    image.load('./Data/Sprites/Player/stand_right.png'),
+    image.load('./Data/Sprites/Player/stand_right.png'),
+    image.load('./Data/Sprites/Player/stand_right.png'),
 
-    image.load('./Data/Sprites/goes_right2.png'),
-    image.load('./Data/Sprites/goes_right2.png'),
-    image.load('./Data/Sprites/goes_right2.png'),
+    image.load('./Data/Sprites/Player/goes_right2.png'),
+    image.load('./Data/Sprites/Player/goes_right2.png'),
+    image.load('./Data/Sprites/Player/goes_right2.png'),
 
-    image.load('./Data/Sprites/stand_right.png'),
-    image.load('./Data/Sprites/stand_right.png'),
-    image.load('./Data/Sprites/stand_right.png')
+    image.load('./Data/Sprites/Player/stand_right.png'),
+    image.load('./Data/Sprites/Player/stand_right.png'),
+    image.load('./Data/Sprites/Player/stand_right.png')
 ]
 
 player_anim = 0
@@ -74,3 +74,9 @@ SETTINGS_JSON = './Data/settings.json'
 
 player_group = sprite.Group()
 wall_group = sprite.Group()
+gun_group = sprite.Group()
+trampoline_group = sprite.Group()
+bullet_group = sprite.Group()
+all_sprites = sprite.Group()
+bullets = sprite.Group()
+mobs_group = sprite.Group()

@@ -5,7 +5,6 @@ import os
 
 from global_vars import *  # Импортируем нужные переменные
 from scenes import *  # Импортируем сцены
-from levels_func import *
 
 
 """
@@ -25,7 +24,7 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption("NEOfighter")
 
-    player = generate_level(load_level('Levels/lvl_1.lvl'))
+    player, gun = generate_level(load_level('Levels/lvl_1.lvl'))
 
     clock = pygame.time.Clock()
 
@@ -50,8 +49,14 @@ if __name__ == '__main__':
         if currency_screen == "start":
             start_screen(screen, "NEOfighter", "Start Game!", "Continue")
         elif currency_screen == 'lvl_1':
+            # Отрисовка объектов первой сцены
             wall_group.update(screen)
             player.update(screen)
+            gun.update(screen)
+            trampoline_group.draw(screen)
+            all_sprites.draw(screen)
+            bullets.draw(screen)
+
         elif currency_screen == 'lvl_2':
             lvl_2(screen)
         elif currency_screen == 'lose':
@@ -72,6 +77,12 @@ if __name__ == '__main__':
                 # Функция, закрывающая окно
                 terminate()
 
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                # Если нажата ЛКМ
+                if event.button == 1:
+                    gun.shoot()
+
+            # Подключение клавиш для управления
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_d:
                     player.go_right()
