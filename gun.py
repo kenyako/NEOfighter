@@ -8,10 +8,16 @@ class Gun(pygame.sprite.Sprite):
     def __init__(self, x, y, Player) -> None:
         super().__init__(gun_group)
 
+        # Начальные координаты
         self.x, self.y = x, y
+
+        # Количество патронов
         self.cartridges_counter = 10
+
+        # Игрок, имеющий это оружие
         self.player = Player
 
+        # Направление стрельбы
         self.rotate_side = "right"
 
         self.image = load_image('./Sprites/gun.png')
@@ -19,6 +25,7 @@ class Gun(pygame.sprite.Sprite):
             self.x * PLATFORM_WIDTH, self.y * PLATFORM_HEIGHT)
 
     def shoot(self):
+        # Если у игрока имеется оружие и хватает патронов..
         if self.cartridges_counter > 0 and self.player.get_weapon:
             bullet = Bullet(self.rect.x, self.rect.y, self.player)
             all_sprites.add(bullet)
@@ -28,21 +35,22 @@ class Gun(pygame.sprite.Sprite):
 
     def update(self, screen):
         if self.player.get_weapon:
+            # Привязка оружия к координатам игрока
             self.rect.y = self.player.rect.y + 40
             all_sprites.update()
-
-            if not self.player.right:
-                if self.rotate_side != "left":
-                    self.image = pygame.transform.flip(self.image, True, False)
-                    self.rotate_side = "left"
-                self.rect.x = self.player.rect.x - 7
 
             if self.player.right:
                 if self.rotate_side != "right":
                     self.image = pygame.transform.flip(self.image, True, False)
                     self.rotate_side = "right"
                 self.rect.x = self.player.rect.x + 7
+            else:
+                if self.rotate_side != "left":
+                    self.image = pygame.transform.flip(self.image, True, False)
+                    self.rotate_side = "left"
+                self.rect.x = self.player.rect.x - 7
         else:
+            # Подбор оружия
             if self.rect.x - 20 <= self.player.rect.x <= self.rect.x + 20 and\
                     self.rect.y - 70 <= self.player.rect.y <= self.rect.y + 70:
                 self.player.get_weapon = True

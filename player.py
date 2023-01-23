@@ -18,6 +18,7 @@ class Player(pygame.sprite.Sprite):
         self.change_x = 0
         self.change_y = 0
 
+        # Имеется ли у игрока оружие
         self.get_weapon = False
 
     def update(self, screen):
