@@ -54,6 +54,8 @@ if __name__ == '__main__':
             player.update(screen)
             gun.update(screen)
             trampoline_group.draw(screen)
+            all_sprites.draw(screen)
+            bullets.draw(screen)
 
         elif currency_screen == 'lvl_2':
             lvl_2(screen)
@@ -74,6 +76,11 @@ if __name__ == '__main__':
 
                 # Функция, закрывающая окно
                 terminate()
+
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                # Если нажата ЛКМ
+                if event.button == 1:
+                    gun.shoot()
 
             # Подключение клавиш для управления
             elif event.type == pygame.KEYDOWN:

@@ -1,6 +1,7 @@
 import pygame
 from LoadImage import load_image
 from global_vars import *
+from bullet import Bullet
 
 
 class Gun(pygame.sprite.Sprite):
@@ -17,9 +18,18 @@ class Gun(pygame.sprite.Sprite):
         self.rect = self.image.get_rect().move(
             self.x * PLATFORM_WIDTH, self.y * PLATFORM_HEIGHT)
 
+    def shoot(self):
+        if self.cartridges_counter > 0 and self.player.get_weapon:
+            bullet = Bullet(self.rect.x, self.rect.y, self.player)
+            all_sprites.add(bullet)
+            bullets.add(bullet)
+
+            self.cartridges_counter -= 1
+
     def update(self, screen):
         if self.player.get_weapon:
             self.rect.y = self.player.rect.y + 40
+            all_sprites.update()
 
             if not self.player.right:
                 if self.rotate_side != "left":
