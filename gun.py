@@ -1,18 +1,23 @@
 import pygame
-from LoadImage import load_image
+from load_image_func import load_image
 from global_vars import *
 from bullet import Bullet
+import json
+import os
 
 
 class Gun(pygame.sprite.Sprite):
-    def __init__(self, x, y, Player) -> None:
-        super().__init__(gun_group)
-
-        # Начальные координаты
-        self.x, self.y = x, y
+    def __init__(self, pos_x, pos_y, Player) -> None:
+        pygame.sprite.Sprite.__init__(gun_group)
 
         # Количество патронов
-        self.cartridges_counter = 10
+        if "settings.json" not in os.listdir("./Data"):
+            self.cartridges_counter = 10
+        else:
+            with open(SETTINGS_JSON) as f:
+                settings = json.load(f)
+
+            self.cartridges_counter = settings['saves']['count_ammo']
 
         # Игрок, имеющий это оружие
         self.player = Player
@@ -22,7 +27,7 @@ class Gun(pygame.sprite.Sprite):
 
         self.image = load_image('./Sprites/gun.png')
         self.rect = self.image.get_rect().move(
-            self.x * PLATFORM_WIDTH, self.y * PLATFORM_HEIGHT)
+            pos_x * PLATFORM_WIDTH, pos_y * PLATFORM_HEIGHT)
 
     def shoot(self):
         # Если у игрока имеется оружие и хватает патронов..
@@ -40,11 +45,14 @@ class Gun(pygame.sprite.Sprite):
             all_sprites.update()
 
             if self.player.right:
+
                 if self.rotate_side != "right":
                     self.image = pygame.transform.flip(self.image, True, False)
                     self.rotate_side = "right"
                 self.rect.x = self.player.rect.x + 7
+
             else:
+
                 if self.rotate_side != "left":
                     self.image = pygame.transform.flip(self.image, True, False)
                     self.rotate_side = "left"

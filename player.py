@@ -20,7 +20,13 @@ class Player(pygame.sprite.Sprite):
         self.change_y = 0
 
         # Имеется ли у игрока оружие
-        self.get_weapon = False
+        if "settings.json" not in os.listdir("./Data"):
+            self.get_weapon = False
+        else:
+            with open(SETTINGS_JSON) as f:
+                settings = json.load(f)
+
+            self.get_weapon = settings['saves']['have_gun']
 
     def update(self, screen):
         global player_anim

@@ -12,6 +12,7 @@ class Bullet(pygame.sprite.Sprite):
         self.rect.centerx = x
 
         self.player = Player
+
         if self.player.right:
             self.speedy = 20
         else:
@@ -23,6 +24,7 @@ class Bullet(pygame.sprite.Sprite):
         # Столкновение со стенами и мобами
         block_hit_list = pygame.sprite.spritecollide(self, wall_group, False)
         hits = pygame.sprite.spritecollide(self, mobs_group, False)
+
         if hits:
             # Убиваем моба
             self.kill()

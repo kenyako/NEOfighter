@@ -49,7 +49,9 @@ if __name__ == '__main__':
         # Менеджер сцен
         if currency_screen == "start":
             start_screen(screen, "NEOfighter", "Start Game!", "Continue")
+
         elif currency_screen == 'lvl_1':
+
             if player.rect.right > SCREEN_WIDTH - 50:
                 lvl_2_loader()
 
@@ -58,7 +60,7 @@ if __name__ == '__main__':
             player.update(screen)
             screen.blit(pygame.transform.scale(load_image(
                 './Sprites/portal.png'), (30, 110)), (720, 170))
-            portal_group.draw(screen)
+            # portal_group.draw(screen)
             gun.update(screen)
             trampoline_group.draw(screen)
             all_sprites.draw(screen)
@@ -66,18 +68,24 @@ if __name__ == '__main__':
 
         elif currency_screen == 'lvl_2':
             lvl_2(screen)
+
         elif currency_screen == 'lose':
             end_screen(screen, "You Lose!", "Restart")
+
         elif currency_screen == 'win':
             end_screen(screen, "You Win!", "Restart")
 
         # Отслеживаем события
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                # Сохранение параметров
+
                 settings['scenes']['last_scene'] = currency_screen
 
                 settings['saves']['coord_x'] = player.rect.x
                 settings['saves']['coord_y'] = player.rect.y
+                settings['saves']['have_gun'] = player.get_weapon
+                settings['saves']['count_ammo'] = gun.cartridges_counter
 
                 with open(SETTINGS_JSON, "w") as f:
                     f.write(json.dumps(settings))

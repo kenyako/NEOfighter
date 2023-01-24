@@ -70,6 +70,7 @@ settings_temp = {
         "coord_x": None,
         "coord_y": None,
         "have_gun": False,
+        "count_ammo": 10,
         "count_health": 100,
     }
 }
