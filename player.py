@@ -12,12 +12,15 @@ class Player(pygame.sprite.Sprite):
         super().__init__(player_group)
 
         # Загружаем изображение с начальной позицией игрока
-        self.image = load_image('./Sprites/stand_sraight.png')
+        self.image = load_image('./Sprites/Player/stand_sraight.png')
         self.rect = self.image.get_rect().move(
             pos_x * PLATFORM_WIDTH, pos_y * PLATFORM_HEIGHT)
 
         self.change_x = 0
         self.change_y = 0
+
+        # Имеется ли у игрока оружие
+        self.get_weapon = False
 
     def update(self, screen):
         global player_anim
@@ -54,7 +57,7 @@ class Player(pygame.sprite.Sprite):
 
         self.rect.y += self.change_y
 
-        # Отслеживание столкновений с поверхностями по вертиками
+        # Отслеживание столкновений с поверхностями по вертикали
         block_hit_list = pygame.sprite.spritecollide(self, wall_group, False)
 
         for block in block_hit_list:
@@ -67,7 +70,19 @@ class Player(pygame.sprite.Sprite):
 
         if self.change_y == 0:
             self.is_jump = False
-            self.image = load_image('./Sprites/stand_sraight.png')
+            self.image = load_image('./Sprites/Player/stand_sraight.png')
+
+        # Отслеживание столкновений с батутом по вертикали
+        block_hit_list = pygame.sprite.spritecollide(
+            self, trampoline_group, False)
+
+        for block in block_hit_list:
+            self.jump(20)
+            break
+
+        if self.change_y == 0:
+            self.is_jump = False
+            self.image = load_image('./Sprites/Player/stand_sraight.png')
 
         block_hit_list = pygame.sprite.spritecollide(self, portal_group, False)
 
@@ -103,23 +118,23 @@ class Player(pygame.sprite.Sprite):
             self.change_y = 0
             self.rect.y = SCREEN_HEIGHT - self.rect.height
 
-    def jump(self):
+    def jump(self, jump_forge=10):
         self.is_jump = True
 
         # Проверка на то, в какую сторону смотрит игрок в момент прыжка
         if self.right:
-            self.image = load_image('./Sprites/jump_right.png')
+            self.image = load_image('./Sprites/Player/jump_right.png')
         else:
             self.image = pygame.transform.flip(
-                load_image('./Sprites/jump_right.png'), True, False)
+                load_image('./Sprites/Player/jump_right.png'), True, False)
 
-        self.rect.y += 10
+        self.rect.y += jump_forge
         platform_hit_list = pygame.sprite.spritecollide(
             self, wall_group, False)
-        self.rect.y -= 10
+        self.rect.y -= jump_forge
 
         if len(platform_hit_list) > 0 or self.rect.bottom >= SCREEN_HEIGHT:
-            self.change_y = -20
+            self.change_y = -jump_forge - 5
 
     def go_left(self):
         self.change_x = -character_speed
@@ -127,7 +142,7 @@ class Player(pygame.sprite.Sprite):
         # Проверка на поворот в прыжке
         if self.right and self.is_jump:
             self.image = pygame.transform.flip(
-                load_image('./Sprites/jump_right.png'), True, False)
+                load_image('./Sprites/Player/jump_right.png'), True, False)
 
         self.right = False
 
@@ -143,6 +158,6 @@ class Player(pygame.sprite.Sprite):
         # Если персонаж находится не в прыжке,
         # он принимает свою обычную позицию
         if not self.is_jump:
-            self.image = load_image('./Sprites/stand_sraight.png')
+            self.image = load_image('./Sprites/Player/stand_sraight.png')
 
         self.change_x = 0
