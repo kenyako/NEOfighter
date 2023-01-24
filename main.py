@@ -65,6 +65,7 @@ if __name__ == '__main__':
             trampoline_group.draw(screen)
             all_sprites.draw(screen)
             bullets.draw(screen)
+            monster_group.draw(screen)
 
         elif currency_screen == 'lvl_2':
             lvl_2(screen)
