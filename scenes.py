@@ -12,6 +12,7 @@ from wall import Wall
 from player import Player
 from gun import Gun
 from trampoline import Trampoline
+from monster import Monster
 
 
 def load_level(filename):
@@ -38,6 +39,8 @@ def generate_level(level):
                 gun = Gun(x, y, new_player)
             elif level[y][x] == "T":
                 Trampoline(x, y)
+            elif level[y][x] == "M":
+                Monster(x, y)
 
     return new_player, gun
 
@@ -128,6 +131,18 @@ def go_link():
 
 
 def lvl_1_loader():
+    with open(SETTINGS_JSON) as f:
+        settings = json.load(f)
+
+    settings['saves']['coord_x'] = None
+    settings['saves']['coord_y'] = None
+    settings['saves']['have_gun'] = False
+    settings['saves']['count_ammo'] = 10
+    settings['saves']['count_health'] = 100
+
+    with open(SETTINGS_JSON, "w") as f:
+        f.write(json.dumps(settings))
+
     reset_value_to_scenes_variable("currency_screen", "lvl_1")
 
 

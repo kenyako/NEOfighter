@@ -1,5 +1,6 @@
 from pygame import image, sprite
 
+
 '''
 В данном файле содержатся глобальные переменные
 Для оптимального доступа из любого файла
@@ -33,7 +34,31 @@ go_sprites = [
     image.load('./Data/Sprites/Player/stand_right.png')
 ]
 
+with_gun_sprites = [
+    image.load('./Data/Sprites/Player/with_gun_1.png'),
+    image.load('./Data/Sprites/Player/with_gun_1.png'),
+    image.load('./Data/Sprites/Player/with_gun_1.png'),
+
+    image.load('./Data/Sprites/Player/with_gun_2.png'),
+    image.load('./Data/Sprites/Player/with_gun_2.png'),
+    image.load('./Data/Sprites/Player/with_gun_2.png'),
+
+    image.load('./Data/Sprites/Player/with_gun_3.png'),
+    image.load('./Data/Sprites/Player/with_gun_3.png'),
+    image.load('./Data/Sprites/Player/with_gun_3.png'),
+
+    image.load('./Data/Sprites/Player/with_gun_2.png'),
+    image.load('./Data/Sprites/Player/with_gun_2.png'),
+    image.load('./Data/Sprites/Player/with_gun_2.png')
+]
+
+mon2_sprite = [
+    image.load('./Data/Sprites/monster_f1.png'),
+    image.load('./Data/Sprites/monster_f2.png')
+]
+
 player_anim = 0
+monsters_anim = 0
 
 # Словарь с цветами, используемыми в коде
 COLORS = {
@@ -65,6 +90,13 @@ settings_temp = {
     "scenes": {
         "currency_screen": "start",
         "last_scene": "start"
+    },
+    "saves": {
+        "coord_x": None,
+        "coord_y": None,
+        "have_gun": False,
+        "count_ammo": 10,
+        "count_health": 100,
     }
 }
 
@@ -74,9 +106,8 @@ SETTINGS_JSON = './Data/settings.json'
 
 player_group = sprite.Group()
 wall_group = sprite.Group()
+portal_group = sprite.Group()
 gun_group = sprite.Group()
 trampoline_group = sprite.Group()
-bullet_group = sprite.Group()
-all_sprites = sprite.Group()
 bullets = sprite.Group()
-mobs_group = sprite.Group()
+monster_group = sprite.Group()

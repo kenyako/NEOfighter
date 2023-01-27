@@ -7,14 +7,14 @@ from button import Button
 
 class ContinueButton(Button):
     def __init__(
-           self, screen, width, height,
-           inactive_color=None, active_color=None, isActive=False
-         ):
+        self, screen, width, height,
+        inactive_color=None, active_color=None, isActive=False
+    ):
         super().__init__(screen, width, height, inactive_color, active_color)
 
         self.isActive = isActive
 
-    def draw(self, btn_x, btn_y, btn_text, action=None, btn_image=None):
+    def draw(self, btn_x, btn_y, btn_text, action=None):
         global alreadyPressed
 
         with open(SETTINGS_JSON) as f:
@@ -80,16 +80,5 @@ class ContinueButton(Button):
                 (btn_x + (self.width // 2 - text_on_btn.get_width() // 2),
                     btn_y + (
                         self.height // 2 - text_on_btn.get_height() // 2
-                        ))
-            )
-
-        # Если передан путь к картинке..
-        elif btn_image is not None:
-            # Отрисовываем картинку на кнопке
-            image_on_btn = pygame.image.load(btn_image)
-            image_rect = image_on_btn.get_rect(
-                topleft=(btn_x, btn_y))
-            self.screen.blit(
-                image_on_btn,
-                image_rect
+                ))
             )
