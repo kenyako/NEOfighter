@@ -11,4 +11,4 @@ class Trampoline(pygame.sprite.Sprite):
 
         self.image = load_image('./Sprites/trampoline.png')
         self.rect = self.image.get_rect().move(
-            self.x * PLATFORM_WIDTH, self.y * PLATFORM_HEIGHT)
+            self.x * PLATFORM_WIDTH, self.y * PLATFORM_HEIGHT + 9)

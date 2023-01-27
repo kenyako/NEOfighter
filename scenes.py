@@ -138,6 +138,7 @@ def lvl_1_loader():
     settings['saves']['coord_y'] = None
     settings['saves']['have_gun'] = False
     settings['saves']['count_ammo'] = 10
+    settings['saves']['count_health'] = 100
 
     with open(SETTINGS_JSON, "w") as f:
         f.write(json.dumps(settings))

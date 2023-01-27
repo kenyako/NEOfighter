@@ -14,6 +14,8 @@ class Monster(pygame.sprite.Sprite):
         self.rect = self.image.get_rect().move(
             self.x * PLATFORM_WIDTH, self.y * PLATFORM_HEIGHT)
 
+        self.monster_health = 100
+
     def update(self, screen):
         global monsters_anim
 

@@ -19,14 +19,19 @@ class Bullet(pygame.sprite.Sprite):
             self.speedy = -20
 
     def update(self):
+
         self.rect.x += self.speedy
 
         # Столкновение со стенами и мобами
         block_hit_list = pygame.sprite.spritecollide(self, wall_group, False)
-        hits = pygame.sprite.spritecollide(self, mobs_group, False)
+        hits = pygame.sprite.spritecollide(self, monster_group, False)
 
-        if hits:
-            # Убиваем моба
+        for object in hits:
             self.kill()
-        elif block_hit_list:
+            object.monster_health -= 40
+
+            if object.monster_health <= 0:
+                object.kill()
+
+        if block_hit_list:
             self.kill()

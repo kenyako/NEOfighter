@@ -48,32 +48,71 @@ if __name__ == '__main__':
 
         # Менеджер сцен
         if currency_screen == "start":
-            start_screen(screen, "NEOfighter", "Start Game!", "Continue")
+            start_screen(screen, "NEOfighter", "New Game!", "Continue")
 
         elif currency_screen == 'lvl_1':
 
             if player.rect.right > SCREEN_WIDTH - 50:
+                wall_group.empty()
+                trampoline_group.empty()
+                monster_group.empty()
+                player, gun = generate_level(load_level('Levels/lvl_2.lvl'))
                 lvl_2_loader()
 
-            # Отрисовка объектов первой сцены
-            wall_group.update(screen)
-            player.update(screen)
-            screen.blit(pygame.transform.scale(load_image(
-                './Sprites/portal.png'), (30, 110)), (720, 170))
-            # portal_group.draw(screen)
-            gun.update(screen)
-            trampoline_group.draw(screen)
-            all_sprites.draw(screen)
-            bullets.draw(screen)
-            monster_group.update(screen)
+            else:
+                # Отрисовка объектов первой сцены
+                wall_group.update(screen)
+                player.update(screen)
+
+                # Отрисовка таблицы со здоровьем и боеприпасами
+                score_table = pygame.Surface((100, 105))
+                score_table.fill((0, 0, 0))
+                score_table.set_alpha(100)
+                screen.blit(score_table, (0, 0))
+
+                font_size = 20
+                font = pygame.font.Font(FONT, font_size)
+
+                health = font.render(str(player.player_health),
+                                     True, COLORS['text'])
+                health_icon = load_image('./Images/hp.png')
+                screen.blit(health, (50, 10))
+                screen.blit(health_icon, (10, 10))
+
+                ammo = font.render(
+                    str(gun.cartridges_counter), True, COLORS['text'])
+                ammo_icon = load_image('./Images/ammo.png')
+                screen.blit(ammo, (50, 60))
+                screen.blit(ammo_icon, (10, 60))
+                # ----------------------------------------------
+
+                screen.blit(pygame.transform.scale(load_image(
+                    './Sprites/portal.png'), (30, 110)), (720, 170))
+                gun.update(screen)
+                trampoline_group.draw(screen)
+                bullets.draw(screen)
+                monster_group.update(screen)
+
+            if player.player_health == 0:
+                lose_scr_loader()
 
         elif currency_screen == 'lvl_2':
-            lvl_2(screen)
+            wall_group.update(screen)
+            player.update(screen)
+            gun_group.update(screen)
+            screen.blit(pygame.transform.scale(load_image(
+                './Sprites/portal.png'), (30, 110)), (720, 130))
 
         elif currency_screen == 'lose':
+            if not player.new_game:
+                player, gun = generate_level(load_level('Levels/lvl_1.lvl'))
+
             end_screen(screen, "You Lose!", "Restart")
 
         elif currency_screen == 'win':
+            if not player.new_game:
+                player, gun = generate_level(load_level('Levels/lvl_1.lvl'))
+
             end_screen(screen, "You Win!", "Restart")
 
         # Отслеживаем события
@@ -87,6 +126,7 @@ if __name__ == '__main__':
                 settings['saves']['coord_y'] = player.rect.y
                 settings['saves']['have_gun'] = player.get_weapon
                 settings['saves']['count_ammo'] = gun.cartridges_counter
+                settings['saves']['count_health'] = player.player_health
 
                 with open(SETTINGS_JSON, "w") as f:
                     f.write(json.dumps(settings))
@@ -103,16 +143,21 @@ if __name__ == '__main__':
 
             # Подключение клавиш для управления
             elif event.type == pygame.KEYDOWN:
+
                 if event.key == pygame.K_d:
                     player.go_right()
+
                 elif event.key == pygame.K_a:
                     player.go_left()
+
                 elif event.key == pygame.K_SPACE:
                     player.jump()
 
             elif event.type == pygame.KEYUP:
+
                 if event.key == pygame.K_d:
                     player.stop()
+
                 elif event.key == pygame.K_a:
                     player.stop()
 
