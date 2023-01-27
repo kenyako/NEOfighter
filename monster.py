@@ -9,6 +9,20 @@ class Monster(pygame.sprite.Sprite):
 
         self.x, self.y = x, y
 
-        self.image = load_image('./Sprites/mon_second1.png')
+        self.image = load_image('./Sprites/monster_f1.png')
+
         self.rect = self.image.get_rect().move(
             self.x * PLATFORM_WIDTH, self.y * PLATFORM_HEIGHT)
+
+    def update(self, screen):
+        global monsters_anim
+
+        self.image = mon2_sprite[monsters_anim]
+
+        if monsters_anim == 1:
+            monsters_anim = 0
+
+        else:
+            monsters_anim += 1
+
+        screen.blit(self.image, self.rect)

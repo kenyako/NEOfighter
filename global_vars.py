@@ -33,7 +33,13 @@ go_sprites = [
     image.load('./Data/Sprites/Player/stand_right.png')
 ]
 
+mon2_sprite = [
+    image.load('./Data/Sprites/monster_f1.png'),
+    image.load('./Data/Sprites/monster_f2.png')
+               ]
+
 player_anim = 0
+monsters_anim = 0
 
 # Словарь с цветами, используемыми в коде
 COLORS = {
@@ -89,3 +95,6 @@ all_sprites = sprite.Group()
 bullets = sprite.Group()
 mobs_group = sprite.Group()
 monster_group = sprite.Group()
+
+player_health = 100
+monster_health = 100

@@ -30,6 +30,7 @@ class Player(pygame.sprite.Sprite):
 
     def update(self, screen):
         global player_anim
+        global player_health
 
         self.calc_grav()
 
@@ -90,10 +91,36 @@ class Player(pygame.sprite.Sprite):
             self.is_jump = False
             self.image = load_image('./Sprites/Player/stand_sraight.png')
 
-        block_hit_list = pygame.sprite.spritecollide(self, portal_group, False)
+        # block_hit_list = pygame.sprite.spritecollide(self, portal_group, False)
+
+        # for block in block_hit_list:
+        #     pass
+
+        # Столкновение с монстром
+        block_hit_list = pygame.sprite.spritecollide(
+            self, monster_group, False)
 
         for block in block_hit_list:
-            pass
+
+            if self.change_y > 0:
+
+                self.rect.bottom = block.rect.top
+                player_health = player_health - 20
+
+                if player_health <= 0:
+                    break
+                    # game over
+
+            elif self.change_y < 0:
+
+                self.rect.top = block.rect.bottom
+                player_health = player_health - 20
+
+                if player_health == 0:
+                    break
+                    # game over
+
+            self.change_y = 0
 
         # Если персонаж находится в гориз. движении и не прыгает,
         # то мы пролистываем кадры ходьбы
