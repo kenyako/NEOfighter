@@ -64,7 +64,7 @@ if __name__ == '__main__':
             else:
                 # Отрисовка объектов первой сцены
                 wall_group.update(screen)
-                player.update(screen)
+                player_group.update(screen)
 
                 # Отрисовка таблицы со здоровьем и боеприпасами
                 score_table = pygame.Surface((100, 105))
@@ -117,43 +117,133 @@ if __name__ == '__main__':
 
                 player, gun = generate_level(load_level('Levels/lvl_2.lvl'))
 
-            wall_group.update(screen)
-            player.update(screen)
+            elif player.rect.right > SCREEN_WIDTH - 50 and player.rect.bottom < 300:
 
-            # Отрисовка таблицы со здоровьем и боеприпасами
-            score_table = pygame.Surface((100, 105))
-            score_table.fill((0, 0, 0))
-            score_table.set_alpha(100)
-            screen.blit(score_table, (0, 0))
+                settings['saves']['is_continue'] = True
 
-            font_size = 20
-            font = pygame.font.Font(FONT, font_size)
+                with open(SETTINGS_JSON, "w") as f:
+                    f.write(json.dumps(settings))
 
-            health = font.render(str(player.player_health),
-                                 True, COLORS['text'])
-            health_icon = load_image('./Images/hp.png')
-            screen.blit(health, (50, 10))
-            screen.blit(health_icon, (10, 10))
+                lvl_3_loader()
 
-            ammo = font.render(str(gun.cartridges_counter),
-                               True, COLORS['text'])
-            ammo_icon = load_image('./Images/ammo.png')
-            screen.blit(ammo, (50, 60))
-            screen.blit(ammo_icon, (10, 60))
-            # ----------------------------------------------
+            else:
+                wall_group.update(screen)
+                player_group.update(screen)
 
-            screen.blit(pygame.transform.scale(load_image(
-                './Sprites/portal.png'), (30, 110)), (720, 130))
-            gun.update(screen)
+                # Отрисовка таблицы со здоровьем и боеприпасами
+                score_table = pygame.Surface((100, 105))
+                score_table.fill((0, 0, 0))
+                score_table.set_alpha(100)
+                screen.blit(score_table, (0, 0))
+
+                font_size = 20
+                font = pygame.font.Font(FONT, font_size)
+
+                health = font.render(str(player.player_health),
+                                     True, COLORS['text'])
+                health_icon = load_image('./Images/hp.png')
+                screen.blit(health, (50, 10))
+                screen.blit(health_icon, (10, 10))
+
+                ammo = font.render(str(gun.cartridges_counter),
+                                   True, COLORS['text'])
+                ammo_icon = load_image('./Images/ammo.png')
+                screen.blit(ammo, (50, 60))
+                screen.blit(ammo_icon, (10, 60))
+                # ----------------------------------------------
+
+                screen.blit(pygame.transform.scale(load_image(
+                    './Sprites/portal.png'), (30, 110)), (720, 130))
+                gun.update(screen)
+                monster_group.update(screen)
+                trampoline_group.draw(screen)
+
+            if player.player_health == 0:
+                lose_scr_loader()
+
+        elif currency_screen == 'lvl_3':
+            if settings['saves']['is_continue']:
+                wall_group.empty()
+                trampoline_group.empty()
+                monster_group.empty()
+                gun_group.empty()
+                player_group.empty()
+
+                settings['saves']['count_ammo'] = gun.cartridges_counter
+                settings['saves']['count_health'] = player.player_health
+                settings['saves']['have_gun'] = player.get_weapon
+
+                settings['saves']['is_continue'] = False
+
+                with open(SETTINGS_JSON, "w") as f:
+                    f.write(json.dumps(settings))
+
+                player, gun = generate_level(load_level('Levels/lvl_3.lvl'))
+
+            elif player.rect.right > SCREEN_WIDTH - 50:
+
+                settings['saves']['is_continue'] = True
+
+                with open(SETTINGS_JSON, "w") as f:
+                    f.write(json.dumps(settings))
+
+                win_scr_loader()
+
+            else:
+                wall_group.update(screen)
+                player_group.update(screen)
+
+                # Отрисовка таблицы со здоровьем и боеприпасами
+                score_table = pygame.Surface((100, 105))
+                score_table.fill((0, 0, 0))
+                score_table.set_alpha(100)
+                screen.blit(score_table, (0, 0))
+
+                font_size = 20
+                font = pygame.font.Font(FONT, font_size)
+
+                health = font.render(str(player.player_health),
+                                     True, COLORS['text'])
+                health_icon = load_image('./Images/hp.png')
+                screen.blit(health, (50, 10))
+                screen.blit(health_icon, (10, 10))
+
+                ammo = font.render(str(gun.cartridges_counter),
+                                   True, COLORS['text'])
+                ammo_icon = load_image('./Images/ammo.png')
+                screen.blit(ammo, (50, 60))
+                screen.blit(ammo_icon, (10, 60))
+                # ----------------------------------------------
+
+                screen.blit(pygame.transform.flip(pygame.transform.scale(load_image(
+                    './Sprites/portal.png'), (30, 110)), True, False), (40, 105))
+                gun.update(screen)
+                # monster_group.update(screen)
+                # trampoline_group.draw(screen)
+
+            if player.player_health == 0:
+                lose_scr_loader()
 
         elif currency_screen == 'lose':
             if not player.new_game:
+                wall_group.empty()
+                trampoline_group.empty()
+                monster_group.empty()
+                gun_group.empty()
+                player_group.empty()
+
                 player, gun = generate_level(load_level('Levels/lvl_1.lvl'))
 
             end_screen(screen, "You Lose!", "Restart")
 
         elif currency_screen == 'win':
             if not player.new_game:
+                wall_group.empty()
+                trampoline_group.empty()
+                monster_group.empty()
+                gun_group.empty()
+                player_group.empty()
+
                 player, gun = generate_level(load_level('Levels/lvl_1.lvl'))
 
             end_screen(screen, "You Win!", "Restart")
@@ -182,7 +272,7 @@ if __name__ == '__main__':
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 # Если нажата ЛКМ
-                if event.button == 1 and currency_screen != 'start':
+                if event.button == 1 and currency_screen not in ['start', 'win', 'lose']:
                     gun.shoot()
 
             # Подключение клавиш для управления

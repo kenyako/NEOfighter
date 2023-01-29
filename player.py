@@ -99,17 +99,12 @@ class Player(pygame.sprite.Sprite):
             self, trampoline_group, False)
 
         for block in block_hit_list:
-            self.jump(20)
+            self.jump(17)
             break
 
         if self.change_y == 0:
             self.is_jump = False
             self.image = load_image('./Sprites/Player/stand_sraight.png')
-
-        # block_hit_list = pygame.sprite.spritecollide(self, portal_group, False)
-
-        # for block in block_hit_list:
-        #     pass
 
         # Столкновение с монстром
         block_hit_list = pygame.sprite.spritecollide(

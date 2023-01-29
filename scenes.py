@@ -40,7 +40,9 @@ def generate_level(level):
             elif level[y][x] == "T":
                 Trampoline(x, y)
             elif level[y][x] == "M":
-                Monster(x, y)
+                Monster('down', x, y)
+            elif level[y][x] == 'm':
+                Monster('flying', x, y)
 
     return new_player, gun
 
@@ -138,7 +140,7 @@ def lvl_1_loader():
     settings['saves']['coord_x'] = None
     settings['saves']['coord_y'] = None
     settings['saves']['have_gun'] = False
-    settings['saves']['count_ammo'] = 10
+    settings['saves']['count_ammo'] = 15
     settings['saves']['count_health'] = 100
 
     with open(SETTINGS_JSON, "w") as f:
@@ -149,6 +151,10 @@ def lvl_1_loader():
 
 def lvl_2_loader():
     reset_value_to_scenes_variable("currency_screen", "lvl_2")
+
+
+def lvl_3_loader():
+    reset_value_to_scenes_variable("currency_screen", "lvl_3")
 
 
 def win_scr_loader():

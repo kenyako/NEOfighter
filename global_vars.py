@@ -52,6 +52,11 @@ with_gun_sprites = [
     image.load('./Data/Sprites/Player/with_gun_2.png')
 ]
 
+mon1_sprite = [
+    image.load('./Data/Sprites/monster_f3.png'),
+    image.load('./Data/Sprites/monster_f4.png')
+]
+
 mon2_sprite = [
     image.load('./Data/Sprites/monster_f1.png'),
     image.load('./Data/Sprites/monster_f2.png')
@@ -95,7 +100,7 @@ settings_temp = {
         "coord_x": None,
         "coord_y": None,
         "have_gun": False,
-        "count_ammo": 10,
+        "count_ammo": 15,
         "count_health": 100,
         "is_continue": False
     }
