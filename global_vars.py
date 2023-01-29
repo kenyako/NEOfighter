@@ -97,6 +97,7 @@ settings_temp = {
         "have_gun": False,
         "count_ammo": 10,
         "count_health": 100,
+        "is_continue": False
     }
 }
 

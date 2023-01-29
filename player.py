@@ -17,8 +17,7 @@ class Player(pygame.sprite.Sprite):
 
         # Загружаем изображение с начальной позицией игрока
         self.image = load_image('./Sprites/Player/stand_sraight.png')
-        self.rect = self.image.get_rect().move(
-            self.pos_x * PLATFORM_WIDTH, self.pos_y * PLATFORM_HEIGHT)
+        self.rect = self.image.get_rect()
 
         self.change_x = 0
         self.change_y = 0
@@ -47,7 +46,15 @@ class Player(pygame.sprite.Sprite):
 
         cur_x = settings['saves']['coord_x']
         cur_y = settings['saves']['coord_y']
-        cur_count_health = settings["saves"]["count_health"]
+        cur_count_health = settings['saves']['count_health']
+
+        if cur_count_health == 100 and self.new_game:
+
+            self.rect = self.image.get_rect().move(
+                self.pos_x * PLATFORM_WIDTH, self.pos_y * PLATFORM_HEIGHT)
+
+            self.player_health = 100
+            self.new_game = False
 
         if cur_x:
             self.rect.x = cur_x
@@ -58,13 +65,6 @@ class Player(pygame.sprite.Sprite):
 
             with open(SETTINGS_JSON, "w") as f:
                 f.write(json.dumps(settings))
-
-        if cur_count_health == 100 and self.new_game:
-
-            self.rect = self.image.get_rect().move(
-                self.pos_x * PLATFORM_WIDTH, self.pos_y * PLATFORM_HEIGHT)
-
-            self.player_health = 100
 
         self.rect.x += self.change_x
 

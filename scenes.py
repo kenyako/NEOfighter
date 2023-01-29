@@ -50,6 +50,7 @@ def load_last_scene():
         settings = json.load(f)
 
     settings['scenes']['currency_screen'] = settings['scenes']['last_scene']
+    settings['saves']['is_continue'] = True
 
     with open(SETTINGS_JSON, 'w') as f:
         f.write(json.dumps(settings))
@@ -148,51 +149,6 @@ def lvl_1_loader():
 
 def lvl_2_loader():
     reset_value_to_scenes_variable("currency_screen", "lvl_2")
-
-
-def lvl_2(screen):
-    """
-    Уровень 2
-    """
-    # Закрашиваем окно
-    screen.fill(COLORS['main'])
-
-    # Отрисовываем текст с результатом
-    font_size = 60
-    font = pygame.font.Font(FONT, font_size)
-    text = font.render("Level 2", True, COLORS['text'])
-
-    text_x = SCREEN_WIDTH // 2 - text.get_width() // 2
-    text_y = SCREEN_HEIGHT // 2 - text.get_height() // 2 - 50
-
-    screen.blit(text, (text_x, text_y))
-
-    btn_width, btn_height = 300, 100
-
-    # Создаем экземпляр класса Button (кнопку на экране завершения игры)
-    btn = Button(
-        screen, btn_width, btn_height,
-        COLORS['btn_inactive_color'],
-        COLORS['btn_active_color']
-    )
-
-    # Отрисовываем кнопку на нужных координатах
-    btn.draw(
-        (SCREEN_WIDTH - btn_width - 5) // 2 - btn_width // 2,
-        SCREEN_HEIGHT // 2 - btn_height // 2 + 75,
-        "Go Win ->", win_scr_loader)
-
-    btn2 = Button(
-        screen, btn_width, btn_height,
-        COLORS['btn_inactive_color'],
-        COLORS['btn_active_color']
-    )
-
-    # Отрисовываем кнопку на нужных координатах
-    btn2.draw(
-        (SCREEN_WIDTH + btn_width + 5) // 2 - btn_width // 2,
-        SCREEN_HEIGHT // 2 - btn_height // 2 + 75,
-        "Go Lose ->", lose_scr_loader)
 
 
 def win_scr_loader():

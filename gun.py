@@ -34,18 +34,18 @@ class Gun(pygame.sprite.Sprite):
         self.rect = self.image.get_rect().move(
             self.pos_x * PLATFORM_WIDTH, self.pos_y * PLATFORM_HEIGHT)
 
+        self.new_game = True
+
     def shoot(self):
         # Если у игрока имеется оружие и хватает патронов..
         if self.cartridges_counter > 0 and self.player.get_weapon:
 
-            bullet = Bullet(self.rect.x, self.rect.y + 5, self.player)
+            bullet = Bullet(self.rect.centerx, self.rect.centery, self.player)
             bullets.add(bullet)
 
             self.cartridges_counter -= 1
 
     def update(self, screen):
-        global new_game
-
         # Проверка на то, запустилась ли новая игра
         with open(SETTINGS_JSON) as f:
             settings = json.load(f)
@@ -53,18 +53,18 @@ class Gun(pygame.sprite.Sprite):
         cur_cartridges = settings["saves"]["count_ammo"]
         cur_having = settings["saves"]["have_gun"]
 
-        if cur_cartridges == 10 and not (cur_having) and self.player.new_game:
+        if cur_cartridges == 10 and not (cur_having) and self.new_game:
 
             self.player.get_weapon = False
             self.cartridges_counter = 10
             self.rect = self.image.get_rect().move(
                 self.pos_x * PLATFORM_WIDTH, self.pos_y * PLATFORM_HEIGHT)
-            self.player.new_game = False
+            self.new_game = False
 
         if self.player.get_weapon:
             # Привязка оружия к координатам игрока
             self.rect.y = self.player.rect.y + 35
-            bullets.update()
+            bullets.update(screen)
 
             if self.player.right:
 

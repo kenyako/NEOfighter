@@ -5,11 +5,14 @@ import pygame
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y, Player):
         pygame.sprite.Sprite.__init__(self)
+
         self.image = pygame.Surface((10, 5))
         self.image.fill("YELLOW")
+
         self.rect = self.image.get_rect()
-        self.rect.bottom = y
+
         self.rect.centerx = x
+        self.rect.bottom = y
 
         self.player = Player
 
@@ -18,7 +21,7 @@ class Bullet(pygame.sprite.Sprite):
         else:
             self.speedy = -20
 
-    def update(self):
+    def update(self, screen):
 
         self.rect.x += self.speedy
 
@@ -35,3 +38,5 @@ class Bullet(pygame.sprite.Sprite):
 
         if block_hit_list:
             self.kill()
+
+        screen.blit(self.image, self.rect)
