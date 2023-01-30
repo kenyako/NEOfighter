@@ -1,4 +1,4 @@
-# NEOfighter: branch *«[Develop](https://github.com/kenyako/NEOfighter/tree/Develop)»*
+# NEOfighter: branch *«[Master](https://github.com/kenyako/NEOfighter/tree/Master)»*
 
 ## Глобальные переменные
 * **size** – храниит длину и ширину окна
