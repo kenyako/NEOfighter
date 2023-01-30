@@ -1,34 +1,33 @@
-# NEOfighter
-![https://img.shields.io/badge/Python-3.7.5-blue](https://img.shields.io/badge/Python-3.8.0-blue)
-![GitHub all releases](https://img.shields.io/github/downloads/kenyako/NEOfighter/total)
+# NEOfighter: branch *«[Develop](https://github.com/kenyako/NEOfighter/tree/Develop)»*
 
-## Index
-* [Team members](https://github.com/kenyako/NEOfighter/#team-members)
-* [Methodology of work in the project](https://github.com/kenyako/NEOfighter/#methodology-of-work-in-the-project)
-* [Game concept](https://github.com/kenyako/NEOfighter/#game-concept)
+## Глобальные переменные
+* **size** – храниит длину и ширину окна
+* **COLORS** – словарь, содержащий в себе все цвета на сцене
+* **FONT** – шрифт, который используется на сцене
+* **alreadyPressed** – переменная, которая хранит последнее состоянии кнопки.
 
-## Team members
-* [@kenyako](https://github.com/kenyako) – **Team Lead, Developer, Logic Architect**
-* [@MichurinDev](https://github.com/MichurinDev) – **Developer, UI-Designer**
-* [@Svetikk4](https://github.com/Svetikk4) – **Developer, Level-Designer**
+**Нажатие ЛКМ -> `alreadyPressed = True` -> Отжатие ЛКМ -> Выполнение нужного алгоритма -> `alreadyPressed = False`**
 
-## Methodology of work in the project
-When working in our team, we use the [*GitFlow*](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) methodology.
-It is optimal for our team.
-*[Miro](https://miro.com/)* service was chosen to track tasks, exchange links and files
+## Class *Button*
+Класс кнопки (как бы очевидно это не звучало).
+Содержит __init()__, определяющий *длину, ширину, базовый увет и цвет при наведении.*
+Функция *draw()*, во-первых, **отрисовывает** кнопку, во-вторых, **обрабатывает наведение** и **нажатие** на неё.
+Также по ключу *function* можно задать функцию, которая будет выполняться при нажатии на кнопку.
 
-## Game concept
-* **Genre:** Platformer
-* **Graphics:** Pixel
+## Class *ContinueButton*
+Класс, унаследованный от Button. Имеет тот же функционал, но также может делать кнопку активной/неактивной (не будет нажиматься),
+запускать последний уровень.
 
-The goal of the game is to complete all the levels, that is, to get to the end point of this level
-The player is a character armed with various items to attack and defend against enemies
+## Func *end_screen(screen, text_on_screen)*
+Функция, отрисовывающая конечный экран, на котором содержится текст *text_on_screen* и кнопка.
+Текст внутри кнопки располагается **строго посередине** кнопки!
+***Свойства кнопки задаются отдельно внутри функции посредством изменения параметров инициализации экземпляра класса Button***
 
-Mechanics:
-* Health Counter
-* Ammo counter
-* Shooting
-* Selection of subjects
-* The ability to restore the health of the character
-* Objects on the level for interacting with the character (interactive obstacles, boosters, etc.)
-* Teleportation by portals
+## Менеджер сцен
+По ключу **currency_screen** в файле *settings.json* хранится название текущей сцены.
+В зависимости от значения в дальнейшем условии в главном цикле (`if currency_screen == "start":...`) отрисовывается определённая сцена.
+Значение переменной изменяет **загрузчик**(loader) сцены: это функция, название которой состоит из *название_сцены*_loader(). Она изменяет значение по ключу **currency_screen** в JSON-файле.
+После изменения значения **currency_screen** соответственно изменяется отрисовываемая сцена.
+
+**last_scene** хранит в себе название сцены, на котором отсановился игрок. Если значение по данному ключу не равно "start", "win" или "lose",
+то эта сцена запускается при нажатии на кнопку класса ContinueButton
