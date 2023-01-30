@@ -179,7 +179,7 @@ if __name__ == '__main__':
 
                 player, gun = generate_level(load_level('Levels/lvl_3.lvl'))
 
-            if player.rect.left == 70 and player.rect.bottom <= 350:
+            if 50 <= player.rect.left <= 70 and player.rect.bottom <= 350:
                 settings['saves']['is_continue'] = True
 
                 with open(SETTINGS_JSON, "w") as f:
