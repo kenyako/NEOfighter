@@ -100,7 +100,7 @@ settings_temp = {
         "coord_x": None,
         "coord_y": None,
         "have_gun": False,
-        "count_ammo": 15,
+        "count_ammo": 20,
         "count_health": 100,
         "is_continue": False
     }
@@ -112,7 +112,6 @@ SETTINGS_JSON = './Data/settings.json'
 
 player_group = sprite.Group()
 wall_group = sprite.Group()
-portal_group = sprite.Group()
 gun_group = sprite.Group()
 trampoline_group = sprite.Group()
 bullets = sprite.Group()

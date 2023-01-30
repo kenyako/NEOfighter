@@ -17,7 +17,8 @@ class Player(pygame.sprite.Sprite):
 
         # Загружаем изображение с начальной позицией игрока
         self.image = load_image('./Sprites/Player/stand_sraight.png')
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect().move(
+            self.pos_x * PLATFORM_WIDTH, self.pos_y * PLATFORM_HEIGHT)
 
         self.change_x = 0
         self.change_y = 0

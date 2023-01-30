@@ -21,7 +21,7 @@ class Gun(pygame.sprite.Sprite):
             self.cartridges_counter = settings["saves"]["count_ammo"]
 
         else:
-            self.cartridges_counter = 15
+            self.cartridges_counter = 20
 
         # Игрок, имеющий это оружие
         self.player = Player
@@ -53,10 +53,10 @@ class Gun(pygame.sprite.Sprite):
         cur_cartridges = settings["saves"]["count_ammo"]
         cur_having = settings["saves"]["have_gun"]
 
-        if cur_cartridges == 15 and not (cur_having) and self.new_game:
+        if cur_cartridges == 20 and not (cur_having) and self.new_game:
 
             self.player.get_weapon = False
-            self.cartridges_counter = 15
+            self.cartridges_counter = 20
             self.rect = self.image.get_rect().move(
                 self.pos_x * PLATFORM_WIDTH, self.pos_y * PLATFORM_HEIGHT)
             self.new_game = False
